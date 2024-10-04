@@ -1,0 +1,9 @@
+# https://moonrepo.dev/docs/config/workspace
+$schema: 'https://moonrepo.dev/schemas/workspace.json'
+
+versionConstraint: '>=1.28.3'
+
+projects:
+  - 'applications/*'
+  - 'packages/*'
+  - 'utilities/*'

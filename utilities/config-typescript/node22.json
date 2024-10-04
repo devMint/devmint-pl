@@ -1,0 +1,5 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node.js 22",
+  "extends": ["./base.json", "@tsconfig/node22/tsconfig.json"]
+}

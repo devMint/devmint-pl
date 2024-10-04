@@ -1,0 +1,12 @@
+name: Continous Integration
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  test_js:
+    name: Lint, test and type-check for JS/TS
+    uses: ./.github/workflows/workflow_lint_js.yml

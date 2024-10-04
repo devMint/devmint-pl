@@ -1,0 +1,49 @@
+{
+  "name": "devmint-pl",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/devmint/devmint-pl",
+  "bugs": {
+    "url": "https://github.com/devmint/devmint-pl/issues",
+    "email": "grzegorz.gajda@devmint.pl"
+  },
+  "contributors": [
+    "Grzegorz Gajda <grzegorzgajda@devmint.pl> (devmint.pl)"
+  ],
+  "type": "module",
+  "engines": {
+    "node": "22.9.0",
+    "pnpm": "9.12.0"
+  },
+  "scripts": {
+    "unused": "knip",
+    "lint:css": "stylelint **/*.css",
+    "lint:js": "eslint .",
+    "lint": "pnpm lint:css && pnpm lint:js",
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@eslint/js": "^9.11.1",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.1.6",
+    "knip": "^5.31.0",
+    "prettier": "^3.3.3",
+    "stylelint": "^16.9.0",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-define-config": "^1.6.0",
+    "stylelint-order": "^6.0.4",
+    "typescript-eslint": "^8.8.0"
+  },
+  "devDependencies": {
+    "@types/eslint-config-prettier": "^6.11.3",
+    "@types/eslint__js": "^8.42.3",
+    "typescript": "^5.6.2"
+  },
+  "packageManager": "pnpm@9.12.0"
+}

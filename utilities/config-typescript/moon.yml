@@ -1,0 +1,12 @@
+language: typescript
+
+project:
+  name: config-typescript
+  description: Collection of shareable configs for Typescript (tsconfig.json)
+
+tags:
+  - typescript
+  - node
+  - react
+
+type: configuration
