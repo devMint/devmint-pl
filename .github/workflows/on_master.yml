@@ -8,9 +8,9 @@ on:
 
 jobs:
   test_css:
-    name: Lint, test and validate for CSS
+    name: CI for CSS
     uses: ./.github/workflows/workflow_test_css.yml
 
   test_js:
-    name: Lint, test and type-check for JS/TS
+    name: CI for JS/TS
     uses: ./.github/workflows/workflow_test_js.yml
