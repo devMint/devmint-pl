@@ -41,8 +41,8 @@ export default [
   {
     files: [...files.ts],
     rules: {
-      ...ts.configs.strict,
-      ...ts.configs.stylistic,
+      ...ts.configs.strict.reduce((a, b) => ({ ...a, ...b.rules }), {}),
+      ...ts.configs.stylistic.reduce((a, b) => ({ ...a, ...b.rules }), {}),
     },
   },
 
