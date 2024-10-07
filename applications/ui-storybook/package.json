@@ -1,0 +1,38 @@
+{
+  "name": "ui-storybook",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "test-storybook",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build": "storybook build"
+  },
+  "dependencies": {
+    "@devmint/ui-components": "workspace:^",
+    "@storybook/addon-a11y": "^8.3.4",
+    "@storybook/addon-essentials": "^8.3.4",
+    "@storybook/addon-interactions": "^8.3.4",
+    "@storybook/addon-links": "^8.3.4",
+    "@storybook/addon-measure": "^8.3.4",
+    "@storybook/addon-themes": "^8.3.4",
+    "@storybook/addon-viewport": "^8.3.4",
+    "@storybook/blocks": "^8.3.4",
+    "@storybook/preview-api": "^8.3.4",
+    "@storybook/react": "^8.3.4",
+    "@storybook/react-vite": "^8.3.4",
+    "@storybook/test": "^8.3.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^8.3.4",
+    "storybook-dark-mode": "^4.0.2"
+  },
+  "devDependencies": {
+    "@devmint/config-typescript": "workspace:^",
+    "@storybook/test-runner": "^0.19.1",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.2.22",
+    "vite": "^5.4.8"
+  }
+}

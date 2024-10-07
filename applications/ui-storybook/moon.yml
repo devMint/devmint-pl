@@ -1,0 +1,35 @@
+$schema: 'https://moonrepo.dev/schemas/project.json'
+
+project:
+  name: 'Moon UI Storybook'
+  description: 'Collection of UI components displayed in nice UI'
+
+language: typescript
+stack: frontend
+tags:
+  - react
+  - frontend
+
+fileGroups:
+  sources:
+    - 'tsconfig.json'
+    - '.storybook/main.ts'
+    - '.storybook/preview.tsx'
+  stories:
+    - 'stories/**/*.stories.ts'
+    - 'stories/**/*.stories.tsx'
+    - 'stories/**/*.mdx'
+
+tasks:
+  build:
+    command: 'pnpm build'
+    inputs: ['@group(sources)', '@group(stories)']
+    outputs: ['storybook-static']
+
+  test:
+    command: 'pnpm test'
+    inputs: ['@group(sources)', '@group(stories)']
+
+  start:
+    command: 'pnpm storybook'
+    inputs: ['@group(sources)', '@group(stories)']

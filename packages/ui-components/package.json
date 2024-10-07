@@ -1,0 +1,12 @@
+{
+  "name": "@devmint/ui-components",
+  "type": "module",
+  "private": true,
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@devmint/config-typescript": "workspace:^"
+  }
+}

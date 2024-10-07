@@ -1,0 +1,11 @@
+language: typescript
+
+project:
+  name: ui-components
+  description: Collection of shareable React's components
+
+tags:
+  - typescript
+  - react
+
+type: library

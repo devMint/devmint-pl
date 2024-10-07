@@ -44,6 +44,7 @@ export default [
     rules: {
       ...ts.configs.strict.reduce((a, b) => ({ ...a, ...b.rules }), {}),
       ...ts.configs.stylistic.reduce((a, b) => ({ ...a, ...b.rules }), {}),
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     },
   },
 

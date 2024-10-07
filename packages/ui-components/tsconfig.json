@@ -1,0 +1,4 @@
+{
+  "extends": "@devmint/config-typescript/react.json",
+  "include": ["src", "typings", "index.ts"]
+}
