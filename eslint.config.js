@@ -1,4 +1,5 @@
 import js from '@eslint/js'
+import markdown from '@eslint/markdown'
 import prettier from 'eslint-config-prettier'
 import ts from 'typescript-eslint'
 
@@ -45,6 +46,11 @@ export default [
       ...ts.configs.stylistic.reduce((a, b) => ({ ...a, ...b.rules }), {}),
     },
   },
+
+  /**
+   * Markdown
+   */
+  ...markdown.configs.recommended,
 
   /**
    * Prettier
