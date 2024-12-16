@@ -1,0 +1,5 @@
+pnpm-lock.yaml
+packages/**/.react-router/**/*
+packages/**/.wireit/**/*
+packages/**/build/**/*
+packages/**/node_modules/**/*

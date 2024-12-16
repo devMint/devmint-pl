@@ -1,0 +1,13 @@
+name: 🧪 Check JS/TS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test_lint:
+    name: 🧪 Verify code changes
+    uses: devMint/devmint-pl/.github/workflows/workflow-lint.yaml@master
+    with:
+      ESLINT_REPORTER: 'github-check'

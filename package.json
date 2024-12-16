@@ -1,0 +1,44 @@
+{
+  "name": "devmint-pl",
+  "type": "module",
+  "version": "0.0.1",
+  "homepage": "https://github.com/devMint/devmint-pl",
+  "bugs": {
+    "url": "https://github.com/devMint/devmint-pl/issues",
+    "email": "grzegorz.gajda@devmint.pl"
+  },
+  "contributors": [
+    "Grzegorz Gajda <grzegorzgajda@devmint.pl> (devmint.pl)"
+  ],
+  "engines": {
+    "node": "23.11.0",
+    "pnpm": "10.11.0"
+  },
+  "scripts": {
+    "unused": "knip",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/js": "^9.27.0",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-perfectionist": "^4.13.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
+    "knip": "^5.59.1",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.0"
+  },
+  "resolutions": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+}
