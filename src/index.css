@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary-lighter: rgb(235 250 250);
+  --color-primary-light: rgb(155 228 228);
+  --color-primary: rgb(46 170 170);
+  --color-primary-dark: rgb(38 140 140);
+  --color-rimary-darker: rgb(16 60 60);
+}

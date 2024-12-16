@@ -1,0 +1,12 @@
+name: Continous Integration
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  test_js:
+    name: CI for JS/TS
+    uses: ./.github/workflows/workflow_test_js.yml
