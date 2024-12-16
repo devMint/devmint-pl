@@ -4,7 +4,17 @@
   "features": {},
   "customizations": {
     "vscode": {
-      "extensions": []
+      "extensions": [
+        "astro-build.astro-vscode",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        "prettier.documentSelectors": ["**/*.astro"],
+        "[astro]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+      }
     }
   }
 }

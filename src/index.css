@@ -6,4 +6,10 @@
   --color-primary: rgb(46 170 170);
   --color-primary-dark: rgb(38 140 140);
   --color-rimary-darker: rgb(16 60 60);
+
+  --color-secondary-lighter: rgb(234 250 245);
+  --color-secondary-light: rgb(152 231 204);
+  --color-secondary: rgb(38 161 119);
+  --color-secondary-dark: rgb(34 144 107);
+  --color-secondary-darker: rgb(15 62 46);
 }

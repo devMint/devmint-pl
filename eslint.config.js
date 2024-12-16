@@ -16,7 +16,7 @@ export default [
    * Ignore some files. Alternative to .eslintignore
    */
   {
-    ignores: ['**/dist/**'],
+    ignores: ['**/.astro/**', '**/dist/**'],
   },
 
   /**
