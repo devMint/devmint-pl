@@ -12,8 +12,8 @@
   ],
   "type": "module",
   "engines": {
-    "node": "22.9.0",
-    "pnpm": "9.12.0"
+    "node": "22.14.0",
+    "pnpm": "9.15.9"
   },
   "scripts": {
     "unused": "knip",
@@ -46,5 +46,5 @@
     "@types/eslint__js": "^8.42.3",
     "typescript": "^5.5.4"
   },
-  "packageManager": "pnpm@9.12.0"
+  "packageManager": "pnpm@9.15.9"
 }
