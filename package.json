@@ -7,9 +7,7 @@
     "url": "https://github.com/devMint/devmint-pl/issues",
     "email": "grzegorz.gajda@devmint.pl"
   },
-  "contributors": [
-    "Grzegorz Gajda <grzegorzgajda@devmint.pl> (devmint.pl)"
-  ],
+  "contributors": ["Grzegorz Gajda <grzegorzgajda@devmint.pl> (devmint.pl)"],
   "engines": {
     "node": "22.14.0",
     "pnpm": "10.7.0"

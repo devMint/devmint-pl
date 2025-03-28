@@ -6,7 +6,11 @@ on:
     branches:
       - master
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   test_js:
-    name: CI for JS/TS
-    uses: ./.github/workflows/workflow_test_js.yml
+    name: 🧪 CI for JS/TS
+    uses: ./.github/workflows/workflow-check-js.yml
