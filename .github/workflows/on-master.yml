@@ -13,4 +13,4 @@ permissions:
 jobs:
   test_js:
     name: 🧪 CI for JS/TS
-    uses: ./.github/workflows/workflow-check-js.yml
+    uses: './.github/workflows/workflow-check-js.yml'
