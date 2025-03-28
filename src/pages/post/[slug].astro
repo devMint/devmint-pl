@@ -1,0 +1,31 @@
+---
+import type { GetStaticPaths } from 'astro'
+import { render } from 'astro:content'
+import { getCollection } from 'astro:content'
+import Prose from '../../components/prose.astro'
+import MainLayout from '../../layouts/main.astro'
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('posts')
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }))
+}) satisfies GetStaticPaths
+
+const { post } = Astro.props
+const { Content } = await render(post)
+
+const meta = {
+  ...post.data.meta,
+  '@context': 'http://schema.org',
+  '@type': 'Article',
+}
+---
+
+<MainLayout description="a mint of creativity" title="devMint">
+  <Prose>
+    <Content />
+  </Prose>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(meta)} />
+</MainLayout>

@@ -1,0 +1,24 @@
+---
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+
+type Props = {
+  title: string
+  slug: string
+  description: string
+  coverImg: ImageMetadata
+  coverAlt?: string
+}
+
+const { title, slug, description, coverImg, coverAlt } = Astro.props
+---
+
+<article class="relative m-auto w-full max-w-[760px]">
+  <a href={`/post/${slug}`}>
+    <Image class="rounded-xl" src={coverImg} alt={coverAlt || title} width={760} />
+    <aside class="absolute top-[calc(100%-90px)] left-4 flex w-[380px] flex-col rounded-xl bg-white/30 p-4">
+      <span class="font-logo text-xl font-bold">{title}</span>
+      <span>{description}</span>
+    </aside>
+  </a>
+</article>

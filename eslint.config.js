@@ -132,8 +132,11 @@ export default [
         'error',
         {
           type: 'alphabetical',
-          groups: ['shorthand', 'condition', 'unknown', 'multiline', 'callback', 'render'],
+          groups: ['key', 'className', 'shorthand', 'condition', 'aria', 'unknown', 'multiline', 'callback', 'render'],
           customGroups: {
+            key: '^key$',
+            aria: '^aria.+',
+            className: '^className$',
             condition: '^is.+',
             callback: '^on.+',
             render: '^render.+',

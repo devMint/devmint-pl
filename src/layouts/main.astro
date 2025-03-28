@@ -1,0 +1,39 @@
+---
+import '../index.css'
+import Navigation from '../components/nav.astro'
+
+type Props = {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>{title}</title>
+    <meta content={description} name="description" />
+    <link href="/sitemap-index.xml" rel="sitemap" />
+  </head>
+  <body class="font-serif">
+    <header class="mx-auto mt-12 mb-12 flex w-full max-w-[660px] flex-col items-start pr-4 pl-4">
+      <div class="flex items-end">
+        <h1 class="font-logo text-6xl font-black text-theme-black">devMint</h1>
+        <img alt="devMint" class="w-[26px]" src="/favicon.svg" />
+      </div>
+      <Navigation
+        menu={[
+          { href: '/', label: 'Home' },
+          { href: '/post', label: 'Posts' },
+          { href: '/resume', label: 'Résumé' },
+        ]}
+      />
+    </header>
+    <main class="pb-[100px]">
+      <slot />
+    </main>
+  </body>
+</html>

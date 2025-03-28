@@ -1,0 +1,29 @@
+---
+type Props = {
+  menu: {
+    href: string
+    label: string
+  }[]
+}
+
+const { menu } = Astro.props
+const currentPath = Astro.url.pathname
+---
+
+<nav>
+  <ul class="flex flex-row justify-center gap-4">
+    {
+      menu.map((element) => (
+        <li class="lowercase">
+          <a
+            class="text-theme-black hover:text-primary-dark data-selected:text-primary-dark"
+            data-selected={currentPath === element.href ? true : undefined}
+            href={element.href}
+          >
+            {element.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
