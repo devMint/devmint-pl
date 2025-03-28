@@ -12,6 +12,7 @@ on:
 
 jobs:
   tests:
+    name: "Test"
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout
