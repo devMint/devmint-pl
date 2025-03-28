@@ -4,6 +4,6 @@ export default {
   compilers: {},
   ignore: [],
   ignoreBinaries: [],
-  ignoreDependencies: ['tailwindcss'],
+  ignoreDependencies: ['tailwindcss', '@tailwindcss/typography'],
   ignoreWorkspaces: [],
 } satisfies KnipConfig

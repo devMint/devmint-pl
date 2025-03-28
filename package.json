@@ -7,17 +7,14 @@
     "url": "https://github.com/devMint/devmint-pl/issues",
     "email": "grzegorz.gajda@devmint.pl"
   },
-  "contributors": [
-    "Grzegorz Gajda <grzegorzgajda@devmint.pl> (devmint.pl)"
-  ],
+  "contributors": ["Grzegorz Gajda <grzegorzgajda@devmint.pl> (devmint.pl)"],
   "engines": {
     "node": "22.13.1",
     "pnpm": "10.2.1"
   },
   "scripts": {
     "unused": "knip",
-    "lint": "eslint .",
-    "format": "prettier --write .",
+    "lint": "biome check .",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -33,21 +30,13 @@
     "tailwindcss": "4.0.17"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
-    "@eslint/js": "^9.23.0",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "4.0.17",
-    "eslint": "^9.23.0",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-astro": "^1.3.1",
-    "eslint-plugin-perfectionist": "^4.10.1",
     "husky": "^9.1.7",
-    "knip": "^5.46.2",
-    "prettier": "^3.5.3",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "typescript-eslint": "^8.28.0"
+    "knip": "^5.46.2"
   },
   "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92"
 }

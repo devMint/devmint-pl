@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Forum&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Forum&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Forum&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
 
 @plugin "@tailwindcss/typography";
 
@@ -19,7 +19,7 @@
   --color-secondary-dark: rgb(34 144 107);
   --color-secondary-darker: rgb(15 62 46);
 
-  --font-sans-serif: 'Montserrat', serif;
-  --font-serif: 'Forum', serif;
-  --font-logo: 'Montserrat', serif;
+  --font-sans-serif: "Montserrat", serif;
+  --font-serif: "Forum", serif;
+  --font-logo: "Montserrat", serif;
 }
