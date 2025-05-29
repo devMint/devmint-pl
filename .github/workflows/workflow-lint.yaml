@@ -38,6 +38,6 @@ jobs:
         run: pnpm unused
 
       - name: 🔬 Lint
-        uses: reviewdog/action-eslint
+        uses: reviewdog/action-eslint@2fee6dd72a5419ff4113f694e2068d2a03bb35dd
         with:
           reporter: ${{ inputs.ESLINT_REPORTER}}
