@@ -6,6 +6,6 @@ on:
 jobs:
   verify:
     name: 🧪 Verify code changes
-    uses: ./.github/workflows/test_lint.yaml
+    uses: ./.github/workflows/workflow-lint.yaml
     with:
       ESLINT_REPORTER: 'github-pr-check'

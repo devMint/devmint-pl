@@ -25,25 +25,45 @@
     },
     "typecheck:wrangler": {
       "commnand": "pnpm wrangler types",
-      "files": ["wrangler.toml", "app/**/*"]
+      "files": [
+        "wrangler.toml",
+        "app/**/*"
+      ]
     },
     "typecheck:react-router": {
       "command": "react-router typegen",
-      "files": ["app/**/*"],
-      "output": [".react-router/**/*"]
+      "files": [
+        "app/**/*"
+      ],
+      "output": [
+        ".react-router/**/*"
+      ]
     },
     "typecheck": {
       "command": "tsc",
-      "dependencies": ["build:images", "typecheck:wrangler", "typecheck:react-router"],
-      "files": ["app/**/*", "app/assets/**/*", "public/**/*", ".react-router/**/*"]
+      "dependencies": [
+        "build:images",
+        "typecheck:wrangler",
+        "typecheck:react-router"
+      ],
+      "files": [
+        "app/**/*",
+        "app/assets/**/*",
+        "public/**/*",
+        ".react-router/**/*"
+      ]
     },
     "start": {
       "command": "wrangler dev",
-      "dependencies": ["build"]
+      "dependencies": [
+        "build"
+      ]
     },
     "deploy": {
       "command": "wrangler deploy",
-      "dependencies": ["build"]
+      "dependencies": [
+        "build"
+      ]
     },
     "build:images": {
       "command": "tsx scripts/transform-images.ts",

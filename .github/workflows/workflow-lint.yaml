@@ -35,4 +35,4 @@ jobs:
       - name: 🔬 Lint
         uses: reviewdog/action-eslint
         with:
-          reporter: github-check
+          reporter: ${{ inputs.ESLINT_REPORTER}}

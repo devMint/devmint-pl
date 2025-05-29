@@ -34,7 +34,7 @@ export function definePost(
     const post = v.parse(PostSchema, schema)
     return {
       ...post,
-      content: () => content ? content(post) : null,
+      content: () => (content ? content(post) : null),
     }
   } catch (e) {
     console.error(`Failed to parse post schema for '${schema.title}'`)
