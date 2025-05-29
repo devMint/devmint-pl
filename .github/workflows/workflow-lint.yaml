@@ -6,6 +6,11 @@ on:
       ESLINT_REPORTER:
         type: string
         default: github-check
+  workflow_call:
+    inputs:
+      ESLINT_REPORTER:
+        type: string
+        default: github-check
 
 jobs:
   tests:

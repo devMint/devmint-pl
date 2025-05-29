@@ -8,6 +8,6 @@ on:
 jobs:
   test_lint:
     name: 🧪 Verify code changes
-    uses: ./.github/workflows/workflow-lint.yaml
+    uses: devmint/devmint-pl/.github/workflows/workflow-lint.yaml@master
     with:
       ESLINT_REPORTER: 'github-check'
