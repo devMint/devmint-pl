@@ -6,6 +6,6 @@ on:
 jobs:
   verify:
     name: 🧪 Verify code changes
-    uses: devmint/devmint-pl/.github/workflows/workflow-lint.yaml@master
+    uses: devMint/devmint-pl/.github/workflows/workflow-lint.yaml@master
     with:
       ESLINT_REPORTER: 'github-pr-check'
