@@ -1,8 +1,7 @@
 import type { KnipConfig } from 'knip'
 
 export default {
-  compilers: {},
-  ignore: [],
+  ignore: ['packages/**/build'],
   ignoreBinaries: [],
   ignoreDependencies: ['tailwindcss', '@tailwindcss/typography'],
   ignoreWorkspaces: [],

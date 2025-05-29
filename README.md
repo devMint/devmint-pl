@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/public/favicon.svg" alt="devMint" width="128" height="128" />
+  <img src="/packages/devmint-pl/public/favicon.svg" alt="devMint" width="128" height="128" />
 </div>
 
 <div align="center">

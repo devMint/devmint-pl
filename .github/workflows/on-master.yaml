@@ -1,0 +1,11 @@
+name: 🧪 Check JS/TS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test_lint:
+    name: 🧪 Verify code changes
+    uses: ./.github/worfklows/workflow-lint.yaml

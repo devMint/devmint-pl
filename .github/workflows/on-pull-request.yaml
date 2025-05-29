@@ -1,0 +1,11 @@
+name: Continous Integration
+
+on:
+  pull_request:
+
+jobs:
+  verify:
+    name: 🧪 Verify code changes
+    uses: ./.github/workflows/test_lint.yaml
+    with:
+      ESLINT_REPORTER: 'github-pr-check'

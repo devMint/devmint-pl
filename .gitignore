@@ -1,10 +1,17 @@
-# Created by https://www.toptal.com/developers/gitignore/api/astro,node,visualstudiocode,macos
-# Edit at https://www.toptal.com/developers/gitignore?templates=astro,node,visualstudiocode,macos
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
 
-### Astro ###
-# Gitignore template for Astro projects
-# Ignore content collection generated files
-.astro
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
 
 ### macOS ###
 # General
@@ -38,6 +45,14 @@ Temporary Items
 ### macOS Patch ###
 # iCloud generated files
 *.icloud
+
+### Mercurial ###
+.hg/
+.hgignore
+.hgsigs
+.hgsub
+.hgsubstate
+.hgtags
 
 ### Node ###
 # Logs
@@ -83,7 +98,6 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-.pnpm-store
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -180,23 +194,35 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
-### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+### react ###
+.DS_*
+**/*.backup.*
+**/*.back.*
 
-# Local History for Visual Studio Code
-.history/
+node_modules
 
-# Built Visual Studio Code Extensions
-*.vsix
+*.sublime*
 
-### VisualStudioCode Patch ###
-# Ignore all local history of files
-.history
-.ionide
+psd
+thumb
+sketch
 
-# End of https://www.toptal.com/developers/gitignore/api/astro,node,visualstudiocode,macos
+### Remix ###
+/.cache
+/build
+/public/build
+.react-router
+
+### Remix+CloudflarePages ###
+/functions/\[\[path\]\].js
+/functions/\[\[path\]\].js.map
+
+### Remix+CloudflareWorkers ###
+/dist
+/.mf
+.wrangler
+worker-configuration.d.ts
+/packages/**/build
+
+### WireIt ###
+.wireit
