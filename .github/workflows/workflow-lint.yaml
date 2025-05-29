@@ -1,7 +1,7 @@
 name: 🧪 Check JS/TS
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       ESLINT_REPORTER:
         type: string
