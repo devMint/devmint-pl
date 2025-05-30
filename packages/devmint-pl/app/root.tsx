@@ -11,6 +11,7 @@ export const links: Route.LinksFunction = () => [
     crossOrigin: 'anonymous',
   },
   { rel: 'stylesheet', href: stylesheet },
+  { rel: 'icon', href: '/favicon.svg' },
 ]
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -58,9 +59,15 @@ export default function App() {
           </ul>
         </nav>
       </header>
-      <main className="pb-[100px]">
+      <main className="min-h-[calc(100vh-280px)]">
         <Outlet />
       </main>
+      <footer className="text-theme-black flex h-[100px] items-center justify-center gap-[4px]">
+        <NavLink className="flex flex-row items-center justify-center gap-[4px]" to={href('/')}>
+          <span className="text-theme-black font-logo hover:text-primary font-black">devMint</span>
+          <img className="w-[18px]" alt="devMint" src="/favicon.svg" />
+        </NavLink>
+      </footer>
     </>
   )
 }

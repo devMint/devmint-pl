@@ -98,7 +98,7 @@ async function generate(input: string, ...presets: ImagePreset[]) {
       width: result.width,
       height: result.height,
       type: `image/${result.format}`,
-      src: `/${output}-${presetName}.${result.format}`,
+      src: `/${output.replace('public/', '')}-${presetName}.${result.format}`,
       media,
     }))
   }

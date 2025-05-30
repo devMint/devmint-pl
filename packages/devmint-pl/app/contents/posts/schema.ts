@@ -6,10 +6,12 @@ const PostSchema = v.object({
   title: v.string(),
   description: v.string(),
   href: v.string(),
-  cover: v.object({
-    ...PictureSchema.entries,
-    alt: v.optional(v.string()),
-  }),
+  cover: v.optional(
+    v.object({
+      ...PictureSchema.entries,
+      alt: v.optional(v.string()),
+    }),
+  ),
   meta: v.object({
     author: v.optional(
       v.object({
@@ -50,11 +52,13 @@ export function definePost(
   }
 }
 
-export function getMeta(post: Omit<v.InferOutput<typeof PostSchema>, 'content'>): MetaDescriptor[] {
+export function getMetaFromPost(post: Omit<v.InferOutput<typeof PostSchema>, 'content'>): MetaDescriptor[] {
   const ogImage =
     Array.isArray(post.meta.image) && post.meta.image.length > 0
       ? post.meta.image.map((img) => ({ property: 'og:image', content: img }))
-      : [{ property: 'og:image', content: post.cover.image.img.src }]
+      : post.cover
+        ? [{ property: 'og:image', content: post.cover.image.img.src }]
+        : []
 
   return [
     { title: `${post.title} - devMint` },
