@@ -3,9 +3,13 @@ name: Continous Integration
 on:
   pull_request:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   verify:
     name: 🧪 Verify code changes
-    uses: devMint/devmint-pl/.github/workflows/workflow-lint.yaml@master
+    uses: ./.github/workflows/workflow-lint.yaml
     with:
       ESLINT_REPORTER: 'github-pr-check'
