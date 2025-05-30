@@ -8,5 +8,5 @@ export default {
      */
     unstable_viteEnvironmentApi: true,
   },
-  prerender: ['/', '/about', '/teksty/hidden-cost-of-dependencies'],
+  prerender: ['/', '/about', '/sitemap.xml', '/atom.xml', '/teksty/hidden-cost-of-dependencies'],
 } satisfies Config

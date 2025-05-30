@@ -1,11 +1,10 @@
 import { href, redirect } from 'react-router'
 import type { Route } from './+types/posts.$slug'
 import { Post } from '../components/post'
-import { posts } from '../contents'
-import { getMeta } from '../contents/posts/schema'
+import { getMetaFromPost, posts } from '../contents'
 
 export function meta({ data }: Route.MetaArgs): Route.MetaDescriptors {
-  return data ? getMeta(data) : []
+  return data ? getMetaFromPost(data) : []
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
