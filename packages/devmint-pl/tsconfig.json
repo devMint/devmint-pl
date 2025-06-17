@@ -1,7 +1,6 @@
 {
-  "include": [".react-router/types/**/*", "app/**/*", "tests/**/*", "scripts/**/*", "worker-configuration.d.ts"],
+  "include": [".react-router/types/**/*", "app/**/*", "typings/**/*", "worker-configuration.d.ts"],
   "compilerOptions": {
-    "composite": true,
     "strict": true,
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "types": ["@cloudflare/vitest-pool-workers", "vite/client"],

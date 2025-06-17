@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Forum&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 @theme {
   --color-theme-black: rgb(65 65 65);
+  --color-theme-white: #aaa;
 
   --color-primary-lighter: rgb(235 250 250);
   --color-primary-light: rgb(155 228 228);
