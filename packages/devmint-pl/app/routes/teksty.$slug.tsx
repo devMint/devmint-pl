@@ -8,7 +8,7 @@ export function meta({ data }: Route.MetaArgs): Route.MetaDescriptors {
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-  return findPostByHref(href('/teksty/:slug', { slug: params.slug }))
+  return findPostByHref(href('/teksty/:slug', { slug: params.slug ?? '' }))
 }
 
 export default function Teksty({ loaderData }: Route.ComponentProps) {

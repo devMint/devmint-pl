@@ -5,6 +5,7 @@
 
 @theme {
   --color-theme-black: rgb(65 65 65);
+  --color-theme-white: #aaa;
 
   --color-primary-lighter: rgb(235 250 250);
   --color-primary-light: rgb(155 228 228);

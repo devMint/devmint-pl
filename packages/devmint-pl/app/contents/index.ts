@@ -1,7 +1,12 @@
 import { Feed } from 'feed'
-import { getMetaFromPost, type Post } from './posts/schema'
+import { getMetaFromPost, type Post } from './posts.schema'
 
-export const posts = [(await import('./posts/hidden-cost-of-dependencies/hidden-cost-of-dependecies')).default]
+export const posts = [
+  (await import('./posts/2025-06-hidden-cost-of-dependencies')).default,
+  (await import('./posts/2025-05-czym-jest-event-loop')).default,
+  (await import('./posts/2025-06-hidden-cost-of-dependencies')).default,
+  (await import('./posts/2025-06-hidden-cost-of-dependencies')).default,
+]
 
 export type { Post }
 export { getMetaFromPost }

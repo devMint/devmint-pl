@@ -1,6 +1,6 @@
-import { href, NavLink } from 'react-router'
+import { href } from 'react-router'
 import type { Route } from './+types/_index'
-import { Picture } from '../components/picture'
+import { Snippet } from '../components/snippet'
 import { posts } from '../contents'
 
 export function meta(): Route.MetaDescriptors {
@@ -15,21 +15,15 @@ export function meta(): Route.MetaDescriptors {
 }
 
 export default function Index() {
+  const [featured1, featured2] = posts
+
   return (
     <div className="m-auto w-full max-w-[768px] p-4">
-      <h1 className="text-theme-black mb-8 text-5xl lowercase">Posts</h1>
-
-      {posts.map((post) => (
-        <article key={post.href}>
-          {post.cover && (
-            <Picture className="rounded-lg" alt={post.title} fallback={post.cover.fallback} image={post.cover.image} />
-          )}
-
-          <NavLink className="text-theme-black hover:text-primary" to={post.href}>
-            <h2 className="pt-4 lowercase">{post.title}</h2>
-          </NavLink>
-        </article>
-      ))}
+      <Snippet post={featured1} size="lg" />
+      <div className="mt-4 flex flex-row gap-4">
+        <Snippet post={featured2} size="md" />
+        <Snippet post={featured1} size="md" />
+      </div>
     </div>
   )
 }

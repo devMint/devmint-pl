@@ -8,7 +8,7 @@ export function meta({ data }: Route.MetaArgs): Route.MetaDescriptors {
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-  return findPostByHref(href('/posts/:slug', { slug: params.slug }))
+  return findPostByHref(href('/posts/:slug', { slug: params.slug ?? '' }))
 }
 
 export default function Posts({ loaderData }: Route.ComponentProps) {

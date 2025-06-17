@@ -1,17 +1,22 @@
 import type { MetaDescriptor } from 'react-router'
 import * as v from 'valibot'
-import { PictureSchema } from '../../components/picture'
+
+const PictureSchema = v.object({
+  imageTypes: v.union([v.array(v.picklist(['png', 'jpeg', 'webp', 'avif'])), v.literal('auto')]),
+  availableWidths: v.optional(v.array(v.number())),
+  imageUrlFor: v.any(),
+  lqip: v.optional(v.any()),
+})
 
 const PostSchema = v.object({
   title: v.string(),
   description: v.string(),
   href: v.string(),
-  cover: v.optional(
-    v.object({
-      ...PictureSchema.entries,
-      alt: v.optional(v.string()),
-    }),
-  ),
+  cover: v.object({
+    image: PictureSchema,
+    alt: v.optional(v.string()),
+    hover: v.optional(v.string()),
+  }),
   meta: v.object({
     author: v.optional(
       v.object({
@@ -23,7 +28,7 @@ const PostSchema = v.object({
     dateModified: v.date(),
     datePublished: v.date(),
     headline: v.string(),
-    image: v.array(v.omit(PictureSchema, ['fallback'])),
+    image: v.array(v.string()),
   }),
   language: v.optional(v.picklist(['pl', 'en']), 'pl'),
 })
@@ -52,12 +57,23 @@ export function definePost(
   }
 }
 
-export function getMetaFromPost(post: Omit<v.InferOutput<typeof PostSchema>, 'content'>): MetaDescriptor[] {
+type PostForMeta = Omit<v.InferOutput<typeof PostSchema>, 'cover' | 'content'> &
+  Partial<Pick<v.InferOutput<typeof PostSchema>, 'cover'>>
+
+/**
+ * Creates OpenGraph meta tags for SEO using post data.
+ * Generates meta descriptors for title, description, URL, locale and images.
+ * Images are taken either from post.meta.image array or from post.cover if available.
+ *
+ * @param post - Post data to generate meta tags from
+ * @returns Array of meta descriptors for SEO
+ */
+export function getMetaFromPost(post: PostForMeta): MetaDescriptor[] {
   const ogImage =
     Array.isArray(post.meta.image) && post.meta.image.length > 0
       ? post.meta.image.map((img) => ({ property: 'og:image', content: img }))
       : post.cover
-        ? [{ property: 'og:image', content: post.cover.image.img.src }]
+        ? [{ property: 'og:image', content: post.cover.image.imageUrlFor(1200, 'png') }]
         : []
 
   return [

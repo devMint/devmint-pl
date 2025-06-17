@@ -1,0 +1,52 @@
+name: 🚀 Deploy to Cloudflare
+
+on:
+  workflow_dispatch:
+    inputs:
+      ESLINT_REPORTER:
+        type: string
+        default: github-check
+  workflow_call:
+    inputs:
+      ESLINT_REPORTER:
+        type: string
+        default: github-check
+
+jobs:
+  tests:
+    name: 'Test'
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: ⎔ Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.1.0'
+          cache: 'pnpm'
+
+      - name: 📥 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 📦 Build
+        run: pnpm --filter=@devmint/devmint-pl build
+
+      - name: 🚀 Deploy
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: 'packages/devmint-pl'
+          packageManager: pnpm
+
+      - name: 🔍 Preview URL
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: echo ${{ env.DEPLOYMENT_URL }}
