@@ -18,4 +18,5 @@ jobs:
   deploy_preview:
     name: 🚀 Deploy preview
     uses: ./.github/workflows/workflow-cloudflare.yaml
+    needs: verify
     if: github.event.pull_request.draft == false
