@@ -29,13 +29,13 @@ export async function loader() {
 
 export default function About({ loaderData }: Route.ComponentProps) {
   return (
-    <Post className="m-auto max-w-[768px] pl-4 pr-4" {...loaderData}>
+    <Post className="enter-page m-auto max-w-[768px] pl-4 pr-4" {...loaderData}>
       <header className="text-theme-black dark:text-theme-white not-prose font-black">
         <h1 className="text-9xl">Hi</h1>
         <h2 className="text-6xl">My name&apos;s Greg</h2>
       </header>
 
-      <ResponsiveImage alt="Hi, my names Greg" src={about} />
+      <ResponsiveImage className="transition-all duration-500 ease-in-out hover:scale-105" alt="Hi, my names Greg" src={about} />
 
       <p>
         I&apos;m Greg, a self-taught software developer with a love for building clean code and breaking speed limits—both in

@@ -18,7 +18,7 @@ export default function Index() {
   const [featured1, featured2] = posts
 
   return (
-    <div className="m-auto w-full max-w-[768px] p-4">
+    <div className="enter-page m-auto w-full max-w-[768px] p-4">
       <Snippet post={featured1} size="lg" />
       <div className="mt-4 flex flex-row gap-4">
         <Snippet post={featured2} size="md" />

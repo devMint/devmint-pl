@@ -74,8 +74,8 @@
     "valibot": "^1.1.0"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.6.0",
-    "@cloudflare/vitest-pool-workers": "^0.8.38",
+    "@cloudflare/vite-plugin": "^1.7.4",
+    "@cloudflare/vitest-pool-workers": "^0.8.44",
     "@react-router/dev": "^7.6.2",
     "@responsive-image/core": "^2.0.0",
     "@responsive-image/react": "^1.1.0",
@@ -85,10 +85,16 @@
     "@types/node": "^24.0.3",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "tailwindcss-animated": "^2.0.0",
     "typescript": "^5.8.3",
-    "vite": "^6.3.5",
+    "vite": "npm:rolldown-vite@^6",
     "vite-tsconfig-paths": "^5.1.4",
     "wireit": "^0.14.12",
-    "wrangler": "^4.20.0"
+    "wrangler": "^4.21.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:rolldown-vite@^6"
+    }
   }
 }
