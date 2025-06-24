@@ -11,8 +11,20 @@ permissions:
   deployments: write
 
 jobs:
-  test_lint:
+  verify:
     name: 🧪 Verify code changes
     uses: ./.github/workflows/workflow-lint.yaml
     with:
       ESLINT_REPORTER: 'github-check'
+
+  deploy:
+    name: 🚀 Deploy devmint.pl
+    uses: ./.github/workflows/workflow-cloudflare.yaml
+    needs: verify
+    with:
+      package_name: 'packages/devmint-pl'
+      command: 'deploy'
+    secrets:
+      cloudflare_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      cloudflare_account: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      gh_token: ${{ secrets.GITHUB_TOKEN }}

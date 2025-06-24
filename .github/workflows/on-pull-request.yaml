@@ -16,10 +16,12 @@ jobs:
       ESLINT_REPORTER: 'github-pr-check'
 
   deploy_preview:
-    name: 🚀 Deploy preview
+    name: 🚀 Deploy devmint.pl as preview URL
     uses: ./.github/workflows/workflow-cloudflare.yaml
     needs: verify
     if: github.event.pull_request.draft == false
+    with:
+      package_name: 'packages/devmint-pl'
     secrets:
       cloudflare_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       cloudflare_account: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
