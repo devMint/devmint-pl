@@ -18,9 +18,13 @@ on:
         required: true
 
 jobs:
-  tests:
+  cloudflare:
     name: 'Deploy devmint.pl'
     runs-on: ubuntu-latest
+    outputs:
+      deployment-url: ${{ steps.deploy.outputs.deployment-url }}
+      command-output: ${{ steps.deploy.outputs.command-output }}
+      command-stderr: ${{ steps.deploy.outputs.command-stderr }}
     steps:
       - name: ⬇️ Checkout
         uses: actions/checkout@v4
