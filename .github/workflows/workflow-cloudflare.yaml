@@ -1,18 +1,14 @@
 name: 🚀 Deploy website to Cloudflare
 
 on:
-  workflow_dispatch:
   workflow_call:
     secrets:
-      CLOUDFLARE_API_TOKEN:
+      cloudflare_token:
         required: true
-      CLOUDFLARE_ACCOUNT_ID:
+      cloudflare_account_id:
         required: true
-      GITHUB_TOKEN:
-
-permissions:
-  id-token: write
-  deployments: write
+      github_token:
+        required: true
 
 jobs:
   tests:
@@ -43,9 +39,9 @@ jobs:
         id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          apiToken: ${{ secrets.cloudflare_token }}
+          accountId: ${{ secrets.cloudflare_account_id }}
+          gitHubToken: ${{ secrets.github_token }}
           workingDirectory: 'packages/devmint-pl'
           packageManager: pnpm
 
