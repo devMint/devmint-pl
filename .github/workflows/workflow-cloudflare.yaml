@@ -1,4 +1,4 @@
-name: 🚀 Deploy to Cloudflare
+name: 🚀 Deploy website to Cloudflare
 
 on:
   workflow_dispatch:
@@ -11,6 +11,10 @@ on:
       ESLINT_REPORTER:
         type: string
         default: github-check
+
+permissions:
+  id-token: write
+  deployments: write
 
 jobs:
   tests:
@@ -43,6 +47,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           workingDirectory: 'packages/devmint-pl'
           packageManager: pnpm
 
