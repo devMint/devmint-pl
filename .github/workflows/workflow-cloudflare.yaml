@@ -5,9 +5,9 @@ on:
     secrets:
       cloudflare_token:
         required: true
-      cloudflare_account_id:
+      cloudflare_account:
         required: true
-      github_token:
+      gh_token:
         required: true
 
 jobs:
@@ -40,8 +40,8 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.cloudflare_token }}
-          accountId: ${{ secrets.cloudflare_account_id }}
-          gitHubToken: ${{ secrets.github_token }}
+          accountId: ${{ secrets.cloudflare_account }}
+          gitHubToken: ${{ secrets.gh_token }}
           workingDirectory: 'packages/devmint-pl'
           packageManager: pnpm
 

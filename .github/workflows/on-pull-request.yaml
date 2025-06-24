@@ -22,5 +22,5 @@ jobs:
     if: github.event.pull_request.draft == false
     secrets:
       cloudflare_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      cloudflare_account_id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      github_token: ${{ secrets.GITHUB_TOKEN }}
+      cloudflare_account: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
