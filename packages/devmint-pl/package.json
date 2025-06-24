@@ -87,14 +87,9 @@
     "@types/react-dom": "^19.1.6",
     "tailwindcss-animated": "^2.0.0",
     "typescript": "^5.8.3",
-    "vite": "npm:rolldown-vite@^6",
+    "vite": "^6",
     "vite-tsconfig-paths": "^5.1.4",
     "wireit": "^0.14.12",
     "wrangler": "^4.21.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "vite": "npm:rolldown-vite@^6"
-    }
   }
 }
