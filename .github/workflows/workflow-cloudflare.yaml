@@ -2,15 +2,13 @@ name: 🚀 Deploy website to Cloudflare
 
 on:
   workflow_dispatch:
-    inputs:
-      ESLINT_REPORTER:
-        type: string
-        default: github-check
   workflow_call:
-    inputs:
-      ESLINT_REPORTER:
-        type: string
-        default: github-check
+    secrets:
+      CLOUDFLARE_API_TOKEN:
+        required: true
+      CLOUDFLARE_ACCOUNT_ID:
+        required: true
+      GITHUB_TOKEN:
 
 permissions:
   id-token: write
