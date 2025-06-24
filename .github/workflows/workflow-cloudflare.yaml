@@ -16,6 +16,16 @@ on:
         required: true
       gh_token:
         required: true
+    outputs:
+      deployment-url: 
+        description: 'The URL of the deployed website'
+        value: ${{ jobs.cloudflare.outputs.deployment-url }}
+      command-output: 
+        description: 'The output of the command'
+        value: ${{ jobs.cloudflare.outputs.command-output }}
+      command-stderr: 
+        description: 'The stderr of the command'
+        value: ${{ jobs.cloudflare.outputs.command-stderr }}
 
 jobs:
   cloudflare:
