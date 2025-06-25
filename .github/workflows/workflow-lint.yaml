@@ -28,7 +28,7 @@ jobs:
       - name: ⎔ Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '24.1.0'
+          node-version: '24.3.0'
           cache: 'pnpm'
 
       - name: 📥 Install dependencies
@@ -41,6 +41,6 @@ jobs:
         run: pnpm unused
 
       - name: 🔬 Lint
-        uses: reviewdog/action-eslint@2fee6dd72a5419ff4113f694e2068d2a03bb35dd
+        uses: reviewdog/action-eslint@75c774e3c5e8ab9a59ffb6c927984cb193a34786
         with:
           reporter: ${{ inputs.ESLINT_REPORTER }}
