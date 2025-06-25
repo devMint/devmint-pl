@@ -1,0 +1,73 @@
+name: 🚀 Deploy website to Cloudflare
+
+on:
+  workflow_call:
+    inputs:
+      package_name:
+        type: string
+        required: true
+      command:
+        type: string
+        default: 'versions upload'
+    secrets:
+      cloudflare_token:
+        required: true
+      cloudflare_account:
+        required: true
+      gh_token:
+        required: true
+    outputs:
+      deployment-url:
+        description: 'The URL of the deployed website'
+        value: ${{ jobs.cloudflare.outputs.deployment-url }}
+      command-output:
+        description: 'The output of the command'
+        value: ${{ jobs.cloudflare.outputs.command-output }}
+      command-stderr:
+        description: 'The stderr of the command'
+        value: ${{ jobs.cloudflare.outputs.command-stderr }}
+
+jobs:
+  cloudflare:
+    name: 'Deploy devmint.pl'
+    runs-on: ubuntu-latest
+    outputs:
+      deployment-url: ${{ steps.deploy.outputs.deployment-url }}
+      command-output: ${{ steps.deploy.outputs.command-output }}
+      command-stderr: ${{ steps.deploy.outputs.command-stderr }}
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: ⎔ Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.1.0'
+          cache: 'pnpm'
+
+      - name: 📥 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 📦 Build
+        run: pnpm --filter=@devmint/devmint-pl build
+
+      - name: 🚀 Deploy
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.cloudflare_token }}
+          accountId: ${{ secrets.cloudflare_account }}
+          gitHubToken: ${{ secrets.gh_token }}
+          workingDirectory: ${{ inputs.package_name }}
+          command: ${{ inputs.command }}
+          packageManager: pnpm
+
+      - name: 🔍 Preview URL
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: echo ${{ env.DEPLOYMENT_URL }}

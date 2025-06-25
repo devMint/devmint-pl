@@ -1,4 +1,5 @@
 import js from '@eslint/js'
+import stylistic from '@stylistic/eslint-plugin'
 import prettier from 'eslint-config-prettier'
 import perfectionist from 'eslint-plugin-perfectionist'
 import react from 'eslint-plugin-react'
@@ -55,6 +56,11 @@ export default [
       '@typescript-eslint/no-import-type-side-effects': 'error',
     },
   },
+
+  /**
+   * Stylistic
+   */
+  stylistic.configs.recommended,
 
   /**
    * React

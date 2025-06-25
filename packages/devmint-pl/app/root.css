@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Forum&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@plugin "tailwindcss-animated";
 
 @theme {
   --color-theme-black: rgb(65 65 65);
+  --color-theme-white: #aaa;
 
   --color-primary-lighter: rgb(235 250 250);
   --color-primary-light: rgb(155 228 228);
@@ -20,4 +23,10 @@
   --font-sans-serif: 'Montserrat', serif;
   --font-serif: 'Forum', serif;
   --font-logo: 'Montserrat', serif;
+}
+
+@layer components {
+  .enter-page {
+    @apply animate-fade-down animate-once animate-duration-500 animate-ease-in-out animate-fill-forwards;
+  }
 }

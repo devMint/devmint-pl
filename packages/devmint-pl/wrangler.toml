@@ -1,4 +1,4 @@
-name = "devmint_pl"
+name = "devmint-pl"
 main = "./app/index.ts"
 workers_dev = true
 compatibility_flags = [ "nodejs_compat_v2", "global_fetch_strictly_public" ]
