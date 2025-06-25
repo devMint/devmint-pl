@@ -9,6 +9,9 @@ on:
       command:
         type: string
         default: 'versions upload'
+      environment:
+        type: string
+        default: 'Production'
     secrets:
       cloudflare_token:
         required: true
@@ -56,6 +59,13 @@ jobs:
       - name: 📦 Build
         run: pnpm --filter=@devmint/devmint-pl build
 
+      - name: 🚀 Create GitHub Deployment
+        uses: chrnorm/deployment-action@v2
+        id: github_deployment
+        with:
+          token: ${{ secrets.gh_token }}
+          environment: ${{ inputs.environment }}
+
       - name: 🚀 Deploy
         id: deploy
         uses: cloudflare/wrangler-action@v3
@@ -71,3 +81,21 @@ jobs:
         env:
           DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
         run: echo ${{ env.DEPLOYMENT_URL }}
+
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: ${{ steps.deploy.outputs.deployment-url }}
+          deployment-id: ${{ steps.github_deployment.outputs.deployment_id }}
+          state: 'success'
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: ${{ steps.deploy.outputs.deployment-url }}
+          deployment-id: ${{ steps.github_deployment.outputs.deployment_id }}
+          state: 'failure'
