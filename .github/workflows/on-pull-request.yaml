@@ -24,6 +24,7 @@ jobs:
     if: github.event.pull_request.draft == false
     with:
       package_name: 'packages/devmint-pl'
+      environment: 'Preview'
     secrets:
       cloudflare_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       cloudflare_account: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
