@@ -1,13 +1,6 @@
 name = "devmint-pl"
-main = "./app/index.ts"
-workers_dev = true
 compatibility_date = "2025-04-09"
 
 [assets]
-binding = "ASSETS"
 directory = "./dist"
 run_worker_first = false
-
-[observability]
-enabled = true
-head_sampling_rate = 1
