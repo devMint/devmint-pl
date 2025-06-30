@@ -1,0 +1,35 @@
+---
+import { GITHUB_CATEGORY, GITHUB_CATEGORY_ID, GITHUB_REPOSITORY, GITHUB_REPOSITORY_ID } from '../consts'
+
+enum DiscussionsMapping {
+  pathname = 'pathname',
+  url = 'url',
+  title = 'title',
+  ogTitle = 'og:title',
+}
+
+type Props = {
+  language: 'pl' | 'en'
+  discussionsMapping?: DiscussionsMapping
+}
+
+const { language, discussionsMapping = DiscussionsMapping.ogTitle } = Astro.props
+---
+
+<script
+  async
+  is:inline
+  crossorigin="anonymous"
+  data-category={GITHUB_CATEGORY}
+  data-category-id={GITHUB_CATEGORY_ID}
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-lang={language}
+  data-mapping={discussionsMapping}
+  data-reactions-enabled="1"
+  data-repo={GITHUB_REPOSITORY}
+  data-repo-id={GITHUB_REPOSITORY_ID}
+  data-strict="0"
+  data-theme="preferred_color_scheme"
+  data-loading="lazy"
+  src="https://giscus.app/client.js"></script>

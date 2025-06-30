@@ -2,7 +2,6 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../../root.css'
-import { ClientRouter } from 'astro:transitions'
 import { SITE_TITLE } from '../../consts'
 
 type Props = {
@@ -29,5 +28,3 @@ const titleFormatter = (title?: string) => (title ? `${title} - ${SITE_TITLE}` :
 <title>{titleFormatter(title)}</title>
 <meta content={titleFormatter(title)} name="title" />
 <meta content={description} name="description" />
-
-<ClientRouter />

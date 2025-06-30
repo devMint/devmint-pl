@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content'
 import { render } from 'astro:content'
+import Comments from '../../components/Comments.astro'
 import BaseHead from '../../components/head/BaseHead.astro'
 import PostHead from '../../components/head/PostHead.astro'
 import Layout from '../../components/Layout.astro'
@@ -34,6 +35,9 @@ const { Content } = await render(post)
       <Post class="enter-page m-auto max-w-[768px] pl-4 pr-4" post={post.data}>
         <Content />
       </Post>
+      <div class="enter-page m-auto max-w-[768px] pl-4 pr-4 pt-4 border-t-1 border-theme-black">
+        <Comments language={post.data.language} />
+      </div>
     </Layout>
   </body>
 </html>

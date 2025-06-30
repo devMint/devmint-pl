@@ -35,5 +35,5 @@ const meta = JSON.stringify({
 
 <article class={classNames}>
   <slot />
-  <script set:html={meta} type="application/ld+json" />
+  <script is:inline set:html={meta} type="application/ld+json" />
 </article>
