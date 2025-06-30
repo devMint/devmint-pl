@@ -1,0 +1,35 @@
+---
+import { twMerge } from 'tailwind-merge'
+
+const { pathname } = Astro.url
+const isActive = (isActive: boolean) =>
+  twMerge(
+    `text-theme-black dark:text-theme-white hover:text-primary-dark dark:hover:text-primary-light lowercase`,
+    isActive && 'text-primary-dark dark:text-primary-light',
+  )
+---
+
+<header class="mx-auto mb-12 mt-12 flex w-full max-w-[660px] flex-col items-start pl-4 pr-4">
+  <div class="flex items-end">
+    <h1 class="font-logo text-theme-black dark:text-theme-white text-6xl font-black">devMint</h1>
+    <img alt="devMint" class="w-[26px]" src="/favicon.svg" />
+  </div>
+
+  <nav class="flex flex-row gap-4">
+    <a class={isActive(pathname === '/')} href="/">Home</a>
+    <a class={isActive(pathname === '/about')} href="/about">About</a>
+  </nav>
+</header>
+<main class="min-h-[calc(100vh-280px)]">
+  <slot />
+</main>
+<footer class="text-theme-black flex h-[100px] items-center justify-center gap-[4px]">
+  <a class="flex flex-row items-center justify-center gap-[4px]" href="/">
+    <span
+      class="text-theme-black dark:text-theme-white font-logo hover:text-primary-dark dark:hover:text-primary-light font-black"
+    >
+      devMint
+    </span>
+    <img alt="devMint" class="w-[18px]" src="/favicon.svg" />
+  </a>
+</footer>

@@ -1,97 +1,53 @@
 {
   "name": "@devmint/devmint-pl",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
+    "dev": "astro dev",
     "build": "wireit",
-    "dev": "react-router dev",
-    "start": "wireit",
+    "astro": "astro",
     "deploy": "wireit",
     "typecheck": "wireit"
   },
   "wireit": {
+    "typecheck": {
+      "command": "wrangler types",
+      "files": [
+        "wrangler.toml",
+        "src/**/*"
+      ],
+      "output": [
+        "worker-configuration.d.ts"
+      ]
+    },
     "build": {
-      "command": "react-router build",
+      "command": "astro build",
       "dependencies": [
         "typecheck"
       ],
       "files": [
-        "app/**/*"
-      ]
-    },
-    "typecheck:wrangler": {
-      "command": "pnpm wrangler types",
-      "files": [
-        "wrangler.toml",
-        "app/**/*"
+        "worker-configuration.d.ts",
+        "src/**/*"
       ],
       "output": [
-        "worker-configuration.d.ts"
-      ]
-    },
-    "typecheck:react-router": {
-      "command": "react-router typegen",
-      "files": [
-        "app/**/*"
-      ],
-      "output": [
-        ".react-router/**/*"
-      ]
-    },
-    "typecheck": {
-      "command": "tsc",
-      "dependencies": [
-        "typecheck:wrangler",
-        "typecheck:react-router"
-      ],
-      "files": [
-        "app/**/*",
-        ".react-router/**/*",
-        "worker-configuration.d.ts"
-      ]
-    },
-    "start": {
-      "command": "wrangler dev",
-      "dependencies": [
-        "build"
-      ]
-    },
-    "deploy": {
-      "command": "wrangler deploy",
-      "dependencies": [
-        "build"
+        "dist"
       ]
     }
   },
   "dependencies": {
-    "@mdx-js/mdx": "^3.1.0",
-    "@mdx-js/react": "^3.1.0",
-    "@react-router/fs-routes": "^7.6.2",
-    "feed": "^5.1.0",
-    "isbot": "^5.1.28",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "react-router": "^7.6.2",
-    "sitemap": "^8.0.0",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.11",
-    "valibot": "^1.1.0"
-  },
-  "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.7.5",
-    "@cloudflare/vitest-pool-workers": "^0.8.47",
-    "@react-router/dev": "^7.6.2",
-    "@responsive-image/core": "^2.0.0",
-    "@responsive-image/react": "^1.1.0",
-    "@responsive-image/vite-plugin": "^2.0.0",
+    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.4.1",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
-    "@types/node": "^24.0.4",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "tailwindcss-animated": "^2.0.0",
+    "astro": "^5.10.1",
+    "sharp": "^0.34.2",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.11",
+    "tailwindcss-animated": "^2.0.0"
+  },
+  "devDependencies": {
     "typescript": "^5.8.3",
-    "vite": "^6",
-    "vite-tsconfig-paths": "^5.1.4",
     "wireit": "^0.14.12",
     "wrangler": "^4.22.0"
   }

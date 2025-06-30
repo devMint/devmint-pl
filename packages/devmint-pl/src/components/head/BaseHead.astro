@@ -1,0 +1,33 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+import '../../root.css'
+import { ClientRouter } from 'astro:transitions'
+import { SITE_TITLE } from '../../consts'
+
+type Props = {
+  title?: string
+  description?: string
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const { title, description = 'a mint of creativity' } = Astro.props
+const titleFormatter = (title?: string) => (title ? `${title} - ${SITE_TITLE}` : SITE_TITLE)
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+<link href="/sitemap-index.xml" rel="sitemap" />
+<link href={new URL('rss.xml', Astro.site)} rel="alternate" title={SITE_TITLE} type="application/rss+xml" />
+
+<!-- Canonical URL -->
+<link href={canonicalURL} rel="canonical" />
+
+<!-- Primary Meta Tags -->
+<title>{titleFormatter(title)}</title>
+<meta content={titleFormatter(title)} name="title" />
+<meta content={description} name="description" />
+
+<ClientRouter />

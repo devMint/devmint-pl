@@ -1,0 +1,39 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
+import BaseHead from '../../components/head/BaseHead.astro'
+import PostHead from '../../components/head/PostHead.astro'
+import Layout from '../../components/Layout.astro'
+import Post from '../../components/Post.astro'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts')
+
+  return posts
+    .filter((post) => post.data.language === 'pl')
+    .map((post) => ({
+      params: { slug: post.data.slug },
+      props: post,
+    }))
+}
+
+type Props = CollectionEntry<'posts'>
+
+const post = Astro.props
+const { Content } = await render(post)
+---
+
+<!doctype html>
+<html class="overflow-y-scroll" lang={post.data.language}>
+  <head>
+    <BaseHead description={post.data.description} title={post.data.title} />
+    <PostHead description={post.data.description} image={post.data.meta.image} title={post.data.title} />
+  </head>
+  <body>
+    <Layout>
+      <Post class="enter-page m-auto max-w-[768px] pl-4 pr-4" post={post.data}>
+        <Content />
+      </Post>
+    </Layout>
+  </body>
+</html>

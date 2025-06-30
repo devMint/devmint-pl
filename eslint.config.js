@@ -1,15 +1,13 @@
 import js from '@eslint/js'
 import stylistic from '@stylistic/eslint-plugin'
 import prettier from 'eslint-config-prettier'
+import astro from 'eslint-plugin-astro'
 import perfectionist from 'eslint-plugin-perfectionist'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
 import ts from 'typescript-eslint'
 
 const files = {
-  js: ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.cjs'],
-  react: ['**/*.jsx', '**/*.tsx'],
-  ts: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
+  js: ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.cjs', '**/*.astro'],
+  ts: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts', '**/*.astro'],
 }
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -19,8 +17,8 @@ export default [
    */
   {
     ignores: [
-      '**/.react-router/**',
-      '**/build/**',
+      '**/.astro/**',
+      '**/dist/**',
       '**/node_modules/**',
       '**/worker-configuration.d.ts',
       './packages/devmint-pl/app/assets/**/*',
@@ -58,43 +56,14 @@ export default [
   },
 
   /**
+   * Astro Config
+   */
+  ...astro.configs['jsx-a11y-strict'],
+
+  /**
    * Stylistic
    */
   stylistic.configs.recommended,
-
-  /**
-   * React
-   */
-  {
-    plugins: { react },
-    settings: {
-      react: { version: '19' },
-    },
-  },
-  {
-    files: [...files.react],
-    languageOptions: {
-      parserOptions: {
-        ...react.configs.recommended.parserOptions,
-        ...react.configs['jsx-runtime'].parserOptions,
-      },
-    },
-    rules: {
-      ...react.configs.recommended.rules,
-      ...react.configs['jsx-runtime'].rules,
-    },
-  },
-
-  /**
-   * React Hooks
-   */
-  { plugins: { 'react-hooks': reactHooks } },
-  {
-    files: [...files.react],
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-    },
-  },
 
   /**
    * Perfectionist
@@ -110,7 +79,6 @@ export default [
           newlinesBetween: 'never',
           groups: [
             ['builtin', 'builtin-type'],
-            'react',
             'external-type',
             'internal-type',
             'parent-type',
@@ -123,14 +91,6 @@ export default [
             'object',
             'style',
           ],
-          customGroups: {
-            value: {
-              react: ['^react$', '^react-.+'],
-            },
-            type: {
-              react: ['^react$', '^react-.+'],
-            },
-          },
         },
       ],
       'perfectionist/sort-named-imports': [

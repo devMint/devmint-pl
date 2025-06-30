@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { twMerge } from 'tailwind-merge'
+
+type PostType = CollectionEntry<'posts'>['data']
+type Props = {
+  posts: CollectionEntry<'posts'>[]
+}
+
+const { posts } = Astro.props
+const defaultGroupBy = (post: PostType) => post.meta.datePublished.getFullYear().toString()
+
+const groups = posts.reduce(
+  (acc, next) => {
+    const key = defaultGroupBy(next.data)
+    return { ...acc, [key]: [...(acc[key] ?? []), next.data] }
+  },
+  {} as Record<string, PostType[]>,
+)
+
+const linkClassNames = twMerge(
+  '[&+&]:border-t-1 flex w-full flex-row p-4 transition-all duration-300',
+  'hover:bg-secondary-light/25 border-secondary-light text-theme-black',
+  'dark:text-theme-white dark:hover:bg-secondary-dark/25 dark:border-secondary-dark',
+)
+---
+
+<div class="w-full flex flex-col">
+  {
+    Object.entries(groups).map(([id, posts]) => (
+      <div class="w-full flex flex-col">
+        {posts.map((post, index) => (
+          <a class={linkClassNames} data-astro-prefetch="viewport" href={post.href}>
+            <span class="font-light w-[15%] content-end">{index === 0 ? id : ''}</span>
+            <span class="text-xl w-[85%]">{post.title}</span>
+          </a>
+        ))}
+      </div>
+    ))
+  }
+</div>
