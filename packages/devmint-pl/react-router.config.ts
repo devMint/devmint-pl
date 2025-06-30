@@ -7,6 +7,8 @@ export default {
      * @see https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/#react-router-v7
      */
     unstable_viteEnvironmentApi: true,
+    unstable_optimizeDeps: true,
+    unstable_splitRouteModules: true,
   },
-  prerender: ['/', '/about', '/sitemap.xml', '/atom.xml', '/teksty/hidden-cost-of-dependencies'],
+  prerender: true,
 } satisfies Config

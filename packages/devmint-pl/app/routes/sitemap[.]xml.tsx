@@ -1,5 +1,5 @@
-import { getFeed } from '../contents'
+import { getSitemap } from '../contents/feed.server'
 
 export async function loader() {
-  return (await getFeed()).rss2()
+  return getSitemap()
 }

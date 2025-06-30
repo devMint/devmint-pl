@@ -1,26 +1,29 @@
 import { href, redirect } from 'react-router'
 import type { Route } from './+types/teksty.$slug'
+import { getMetaFromPost } from '../contents/posts.schema'
 import { Post } from '../components/post'
-import { getMetaFromPost, posts } from '../contents'
+import { posts } from '../contents'
+import { MDXProvider } from '@mdx-js/react'
+import { runSync } from '@mdx-js/mdx'
+import * as runtime from 'react/jsx-runtime'
 
 export function meta({ data }: Route.MetaArgs): Route.MetaDescriptors {
-  return data ? getMetaFromPost(data) : []
+  return data ? getMetaFromPost(data.meta) : []
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-  return findPostByHref(href('/teksty/:slug', { slug: params.slug ?? '' }))
+  const post = posts[href('/teksty/:slug', { slug: params.slug })]
+  if (!post) return redirect('/')
+
+  return post
 }
 
 export default function Teksty({ loaderData }: Route.ComponentProps) {
-  const post = findPostByHref(loaderData.href)
-  return <Post {...loaderData}>{post.content()}</Post>
-}
+  const { default: Content } = runSync(loaderData.content, { ...runtime, baseUrl: import.meta.url })
 
-function findPostByHref(postHref: string) {
-  const post = posts.find((post) => {
-    return post.href === postHref && post.language === 'pl'
-  })
-
-  if (!post) throw redirect(href('/'), { status: 404 })
-  return post
+  return (
+    <Post className="enter-page m-auto max-w-[768px] pl-4 pr-4" {...loaderData.meta}>
+      <Content />
+    </Post>
+  )
 }

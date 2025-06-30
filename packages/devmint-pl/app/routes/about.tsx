@@ -2,7 +2,7 @@ import { href } from 'react-router'
 import type { Route } from './+types/about'
 import { ResponsiveImage } from '@responsive-image/react'
 import { Post } from '../components/post'
-import { getMetaFromPost, type Post as PostType } from '../contents'
+import { getMetaFromPost, type PostType } from '../contents/posts.schema'
 import opengraph from '../images/about.png?w=1200&format=png&responsive'
 import about from '../images/about.png?w=384;768;1536&lqip=inline&responsive'
 

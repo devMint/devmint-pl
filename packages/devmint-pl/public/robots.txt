@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devmint.pl/sitemap-index.xml
+Sitemap: https://devmint.pl/sitemap.xml

@@ -12,6 +12,9 @@ export const links: Route.LinksFunction = () => [
   },
   { rel: 'stylesheet', href: stylesheet },
   { rel: 'icon', href: '/favicon.svg' },
+  { rel: 'sitemap', type: 'application/xml', title: 'Sitemap', href: href('/sitemap.xml') },
+  { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: href('/rss.xml') },
+  { rel: 'alternate', type: 'application/atom+xml', title: 'Atom', href: href('/atom.xml') },
 ]
 
 export function Layout({ children }: { children: React.ReactNode }) {

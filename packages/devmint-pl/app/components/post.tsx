@@ -1,7 +1,7 @@
-import type { Post } from '../contents'
+import type { PostType } from '../contents/posts.schema'
 import { twMerge } from 'tailwind-merge'
 
-type PostProps = React.PropsWithChildren<Omit<Post, 'cover' | 'content'>> & {
+type PostProps = React.PropsWithChildren<PostType> & {
   className?: string
 }
 

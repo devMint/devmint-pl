@@ -1,6 +1,6 @@
 /** @type {import('prettier').Config} */
 const prettierConfig = {
-  plugins: ['prettier-plugin-tailwindcss'],
+  plugins: ['prettier-plugin-tailwindcss', '@prettier/plugin-oxc'],
   printWidth: 130,
   semi: false,
   singleQuote: true,
