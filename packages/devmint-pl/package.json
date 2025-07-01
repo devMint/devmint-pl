@@ -27,7 +27,8 @@
       ],
       "files": [
         "worker-configuration.d.ts",
-        "src/**/*"
+        "src/**/*",
+        "astro.config.mjs"
       ],
       "output": [
         "dist"

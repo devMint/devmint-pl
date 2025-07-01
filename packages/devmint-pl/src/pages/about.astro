@@ -1,10 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { Picture } from 'astro:assets'
 import about from '../assets/about.png'
-import BaseHead from '../components/head/BaseHead.astro'
 import PostHead from '../components/head/PostHead.astro'
 import Layout from '../components/Layout.astro'
+import Picture from '../components/Picture.astro'
 import Post from '../components/Post.astro'
 
 const aboutMe = {
@@ -24,47 +23,33 @@ const aboutMe = {
 } satisfies CollectionEntry<'posts'>['data']
 ---
 
-<!doctype html>
-<html class="overflow-y-scroll" lang="en">
-  <head>
-    <BaseHead description={aboutMe.description} title={aboutMe.title} />
-    <PostHead description={aboutMe.description} image={aboutMe.meta.image} title={aboutMe.title} />
-  </head>
-  <body>
-    <Layout>
-      <Post class="enter-page m-auto max-w-[768px] pl-4 pr-4" post={aboutMe}>
-        <header class="text-theme-black dark:text-theme-white not-prose font-black">
-          <h1 class="text-9xl">Hi</h1>
-          <h2 class="text-6xl">My name&apos;s Greg</h2>
-        </header>
+<Layout description={aboutMe.description} title={aboutMe.title}>
+  <PostHead description={aboutMe.description} image={aboutMe.meta.image} slot="head" title={aboutMe.title} />
+  <Post class="enter-page m-auto max-w-[768px] pl-4 pr-4" post={aboutMe}>
+    <header class="text-theme-black dark:text-theme-white not-prose font-black">
+      <h1 class="text-9xl">Hi</h1>
+      <h2 class="text-6xl">My name&apos;s <span class="devmint-title">Greg</span></h2>
+    </header>
 
-        <Picture
-          alt="Hi, my names Greg"
-          class="transition-all duration-500 ease-in-out hover:scale-105"
-          formats={['avif', 'webp', 'png']}
-          src={about}
-        />
+    <Picture alt="Hi, my names Greg" src={about} title="Hi, my name is Greg" />
 
-        <p>
-          I&apos;m Greg, a self-taught software developer with a love for building clean code and breaking speed limits—both in
-          projects and on the road. From fine-tuning backend systems to binge-reading manga and cheering during F1 weekends, I
-          live at the intersection of logic and passion. This blog is my digital garage for experiments, notes, and ideas worth
-          sharing.
-        </p>
+    <p>
+      I&apos;m Greg, a self-taught software developer with a love for building clean code and breaking speed limits—both in
+      projects and on the road. From fine-tuning backend systems to binge-reading manga and cheering during F1 weekends, I live at
+      the intersection of logic and passion. This blog is my digital garage for experiments, notes, and ideas worth sharing.
+    </p>
 
-        <p>
-          I started out building simple websites with Drupal and WordPress—tweaking themes, wrangling plugins, and learning the
-          hard way that “just one more module” rarely solves the problem. From there, I stepped into the world of object-oriented
-          PHP, where I got serious about architecture, patterns, and writing code that didn’t collapse under its own weight.
-        </p>
-        <p>
-          Over time, curiosity (and frustration) led me to the Node.js ecosystem. I re-learned how to think about the backend,
-          embraced JavaScript fully, and—after years of PHP templates and jQuery hacks—taught myself how to build modern frontends
-          from scratch. That’s when I met React, and everything changed. Fast forward a few years and one Go talk at a tech
-          conference later, I fell in love with the simplicity and raw speed of Golang. Today, I work as a full-stack developer
-          fluent in Node, Go, and React—with just enough DevOps to ship things without breaking production (most of the time).
-        </p>
-      </Post>
-    </Layout>
-  </body>
-</html>
+    <p>
+      I started out building simple websites with Drupal and WordPress—tweaking themes, wrangling plugins, and learning the hard
+      way that “just one more module” rarely solves the problem. From there, I stepped into the world of object-oriented PHP,
+      where I got serious about architecture, patterns, and writing code that didn’t collapse under its own weight.
+    </p>
+    <p>
+      Over time, curiosity (and frustration) led me to the Node.js ecosystem. I re-learned how to think about the backend,
+      embraced JavaScript fully, and—after years of PHP templates and jQuery hacks—taught myself how to build modern frontends
+      from scratch. That’s when I met React, and everything changed. Fast forward a few years and one Go talk at a tech conference
+      later, I fell in love with the simplicity and raw speed of Golang. Today, I work as a full-stack developer fluent in Node,
+      Go, and React—with just enough DevOps to ship things without breaking production (most of the time).
+    </p>
+  </Post>
+</Layout>

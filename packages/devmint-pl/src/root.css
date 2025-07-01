@@ -11,13 +11,15 @@
   --color-primary-light: rgb(155 228 228);
   --color-primary: rgb(46 170 170);
   --color-primary-dark: rgb(38 140 140);
-  --color-rimary-darker: rgb(16 60 60);
+  --color-primary-darker: rgb(16 60 60);
 
   --color-secondary-lighter: rgb(234 250 245);
   --color-secondary-light: rgb(152 231 204);
   --color-secondary: rgb(38 161 119);
   --color-secondary-dark: rgb(34 144 107);
   --color-secondary-darker: rgb(15 62 46);
+
+  --gradient-devmint: linear-gradient(45deg, rgba(26, 160, 103, 1) 0%, rgba(34, 168, 172, 1) 47%, rgba(36, 171, 193, 1) 100%);
 
   --font-sans-serif: 'Montserrat', serif;
   --font-serif: 'Forum', serif;
@@ -31,5 +33,10 @@
 @layer components {
   .enter-page {
     @apply animate-fade-down animate-once animate-duration-500 animate-ease-in-out animate-fill-forwards;
+  }
+  .devmint-title {
+    @apply bg-(image:--gradient-devmint);
+    @apply bg-clip-text text-transparent;
+    @apply selection:bg-gradient-to-t selection:text-white;
   }
 }
