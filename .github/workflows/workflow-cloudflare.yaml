@@ -30,6 +30,10 @@ on:
         description: 'The stderr of the command'
         value: ${{ jobs.cloudflare.outputs.command-stderr }}
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   cloudflare:
     name: 'Deploy devmint.pl'
@@ -52,6 +56,19 @@ jobs:
         with:
           node-version: '24.3.0'
           cache: 'pnpm'
+
+      - name: 💾 Set up cache for Wireit
+        uses: google/wireit@setup-github-actions-caching/v2
+
+      - name: 💾 Restore cache for Astro
+        uses: actions/cache/restore@v4
+        with:
+          path: 'packages/devmint-pl/.cache'
+          key: 'astro-images-${{ runner.os }}-${{ github.ref }}'
+          restore-keys: |
+            astro-images-${{ runner.os }}-${{ github.ref }}
+            astro-images-${{ runner.os }}
+            astro-images-
 
       - name: 📥 Install dependencies
         run: pnpm install --frozen-lockfile
@@ -99,3 +116,10 @@ jobs:
           environment-url: ${{ steps.deploy.outputs.deployment-url }}
           deployment-id: ${{ steps.github_deployment.outputs.deployment_id }}
           state: 'failure'
+
+      - name: 💾 Save cache for Astro
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: 'packages/devmint-pl/.cache'
+          key: 'astro-images-${{ runner.os }}-${{ github.ref }}'
