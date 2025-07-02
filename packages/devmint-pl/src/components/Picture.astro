@@ -8,23 +8,27 @@ type Props = {
   title?: string
   class?: string
   size?: 768
+  loading?: 'lazy' | 'eager'
 }
 
-const { src, alt, class: className, size = 768, title } = Astro.props
+const { src, alt, class: className, size = 768, title, loading = 'lazy' } = Astro.props
 const { $id } = Astro.locals
 const pictureId = $id('picture')
 ---
 
 <figure aria-labelledby={pictureId} class:list={['w-full', size === 768 && 'max-w-[768px']}>
+  <!-- @ts-expect-error "height" is not required for AstroPicture -->
   <AstroPicture
     alt={alt}
     class:list={['rounded-lg transition-all duration-300 hover:scale-105', className]}
     formats={['avif', 'webp', 'png']}
     layout="constrained"
-    loading="lazy"
+    loading={loading}
     src={src}
     title={title || alt}
     width={size}
   />
-  <figcaption class="text-xs text-gray-400 text-center hover:cursor-default" id={pictureId}>{title || alt}</figcaption>
+  <figcaption class="text-xs text-gray-400 text-center hover:cursor-default selection:text-gray-700" id={pictureId}>
+    {title || alt}
+  </figcaption>
 </figure>

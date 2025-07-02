@@ -17,12 +17,6 @@ const groups = posts.reduce(
   },
   {} as Record<string, PostType[]>,
 )
-
-const linkClassNames = twMerge(
-  '[&+&]:border-t-1 flex w-full flex-row p-4 transition-all duration-300',
-  'hover:bg-secondary/25 border-secondary-light text-theme-black',
-  'dark:text-theme-white dark:hover:bg-secondary-dark/25 dark:border-secondary-dark',
-)
 ---
 
 <div class="w-full flex flex-col">
@@ -30,7 +24,15 @@ const linkClassNames = twMerge(
     Object.entries(groups).map(([id, posts]) => (
       <div class="w-full flex flex-col">
         {posts.map((post, index) => (
-          <a class={linkClassNames} data-astro-prefetch="viewport" href={post.href}>
+          <a
+            data-astro-prefetch="viewport"
+            href={post.href}
+            class:list={twMerge([
+              '[&+&]:border-t-1 flex w-full flex-row p-4 transition-all duration-300',
+              'hover:bg-secondary/25 border-secondary-light text-theme-black',
+              'dark:text-theme-white dark:hover:bg-secondary-dark/25 dark:border-secondary-dark',
+            ])}
+          >
             <span class="font-light w-[15%] content-end">{index === 0 ? id : ''}</span>
             <span class="text-xl w-[85%]">{post.title}</span>
           </a>

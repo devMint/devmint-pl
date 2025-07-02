@@ -9,11 +9,10 @@ type Props = BaseHeadProps & {
 const { pathname } = Astro.url
 const { title, description, language = 'en' } = Astro.props
 
-const isActive = (isActive: boolean) =>
-  twMerge(
-    `text-theme-black dark:text-theme-white hover:text-primary-dark dark:hover:text-primary-light lowercase`,
-    isActive && 'text-primary-dark dark:text-primary-light',
-  )
+const linkClassNames = twMerge([
+  `text-theme-black dark:text-theme-white hover:text-primary-dark dark:hover:text-primary-light lowercase`,
+  'data-[active=true]:text-primary-dark dark:data-[active=true]:text-primary-light',
+])
 ---
 
 <!doctype html>
@@ -30,8 +29,8 @@ const isActive = (isActive: boolean) =>
       </div>
 
       <nav class="flex flex-row gap-4">
-        <a class={isActive(pathname === '/')} href="/">Home</a>
-        <a class={isActive(pathname === '/about')} href="/about">About</a>
+        <a class:list={linkClassNames} data-active={pathname === '/'} href="/">Home</a>
+        <a class:list={linkClassNames} data-active={pathname === '/about'} href="/about">About</a>
       </nav>
     </header>
     <main class="min-h-[calc(100vh-280px)]">
@@ -44,7 +43,7 @@ const isActive = (isActive: boolean) =>
         >
           devMint
         </span>
-        <img alt="devMint" class="w-[18px]" src="/favicon.svg" />
+        <img alt="devMint" class="w-[18px]" loading="lazy" src="/favicon.svg" />
       </a>
     </footer>
   </body>
