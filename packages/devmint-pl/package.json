@@ -41,7 +41,8 @@
     "@astrojs/sitemap": "^3.4.1",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.10.2",
+    "astro": "^5.11.0",
+    "astro-favicons": "^3.1.5",
     "sharp": "^0.34.2",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
@@ -50,6 +51,6 @@
   "devDependencies": {
     "typescript": "^5.8.3",
     "wireit": "^0.14.12",
-    "wrangler": "^4.22.0"
+    "wrangler": "^4.23.0"
   }
 }

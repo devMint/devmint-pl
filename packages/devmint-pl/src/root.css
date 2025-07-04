@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Forum&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @plugin "tailwindcss-animated";
@@ -21,8 +20,7 @@
 
   --gradient-devmint: linear-gradient(45deg, rgba(26, 160, 103, 1) 0%, rgba(34, 168, 172, 1) 47%, rgba(36, 171, 193, 1) 100%);
 
-  --font-sans-serif: 'Montserrat', serif;
-  --font-serif: 'Forum', serif;
+  --font-sans-serif: 'Montserrat', --font-serif: 'Forum', serif;
   --font-logo: 'Montserrat', serif;
 }
 
