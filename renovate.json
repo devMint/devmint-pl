@@ -3,8 +3,10 @@
   "extends": ["config:recommended"],
   "groupName": "all dependencies",
   "groupSlug": "all",
+  "schedule": "* * 1 */1 *",
   "lockFileMaintenance": {
-    "enabled": false
+    "enabled": true,
+    "automerge": true
   },
   "packageRules": [
     {
