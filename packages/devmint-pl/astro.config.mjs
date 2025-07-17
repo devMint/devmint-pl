@@ -1,8 +1,9 @@
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
-import { defineConfig } from 'astro/config'
 import favicons from 'astro-favicons'
+import og from 'astro-og'
+import { defineConfig } from 'astro/config'
 
 export default defineConfig({
   site: 'https://devmint.pl',
@@ -21,6 +22,7 @@ export default defineConfig({
         favicon: 'public/favicon.svg',
       },
     }),
+    og(),
   ],
   vite: {
     plugins: [tailwindcss()],

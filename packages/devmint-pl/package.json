@@ -41,16 +41,17 @@
     "@astrojs/sitemap": "^3.4.1",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.11.0",
+    "astro": "^5.11.2",
     "astro-favicons": "^3.1.5",
-    "sharp": "^0.34.2",
+    "astro-og": "^0.3.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
     "tailwindcss-animated": "^2.0.0"
   },
   "devDependencies": {
+    "sharp": "^0.34.3",
     "typescript": "^5.8.3",
     "wireit": "^0.14.12",
-    "wrangler": "^4.23.0"
+    "wrangler": "^4.25.0"
   }
 }
