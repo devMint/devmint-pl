@@ -1,0 +1,57 @@
+---
+import { twMerge } from 'tailwind-merge'
+import BaseHead, { type Props as BaseHeadProps } from './head/BaseHead.astro'
+
+type Props = BaseHeadProps & {
+  language?: 'en' | 'pl'
+}
+
+const { pathname } = Astro.url
+const { title, description, language = 'en' } = Astro.props
+
+const linkClassNames = twMerge([
+  `text-theme-black dark:text-theme-white hover:text-primary-dark dark:hover:text-primary-light lowercase`,
+  'data-[active=true]:text-primary-dark dark:data-[active=true]:text-primary-light',
+])
+---
+
+<!doctype html>
+<html class="overflow-y-scroll" lang={language}>
+  <head>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Forum&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <BaseHead description={description} title={title} />
+    <slot name="head" />
+  </head>
+  <body class="dark:bg-[#36393e]">
+    <header class="mx-auto mb-12 mt-12 flex w-full max-w-[660px] flex-col items-start pl-4 pr-4">
+      <div class="flex items-end">
+        <h1 class="font-logo text-theme-black dark:text-theme-white text-6xl font-black">devMint</h1>
+        <img alt="devMint" class="w-[26px]" src="/favicon.svg" />
+      </div>
+
+      <nav class="flex flex-row gap-4">
+        <a class:list={linkClassNames} data-active={pathname === '/'} href="/">Home</a>
+        <a class:list={linkClassNames} data-active={pathname === '/about'} href="/about">About</a>
+      </nav>
+    </header>
+    <main class="min-h-[calc(100vh-280px)]">
+      <slot />
+    </main>
+    <footer class="text-theme-black flex h-[100px] items-center justify-center gap-[4px]">
+      <a class="flex flex-row items-center justify-center gap-[4px]" href="/">
+        <span
+          class="text-theme-black dark:text-theme-white font-logo hover:text-primary-dark dark:hover:text-primary-light font-black"
+        >
+          devMint
+        </span>
+        <img alt="devMint" class="w-[18px]" loading="lazy" src="/favicon.svg" />
+      </a>
+    </footer>
+  </body>
+</html>

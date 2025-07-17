@@ -1,0 +1,20 @@
+name: 🔥 Keep images cache hot
+
+on:
+  schedule:
+    - cron: 0 6 * * 6 # Every Saturday at 6:00 AM
+
+jobs:
+  hit-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 💾 Restore cached images
+        id: cache-images-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: 'packages/devmint-pl/.cache'
+          key: 'astro-images-${{ runner.os }}-${{ github.ref }}'
+          restore-keys: |
+            astro-images-${{ runner.os }}-${{ github.ref }}
+            astro-images-${{ runner.os }}
+            astro-images-

@@ -1,0 +1,44 @@
+---
+import type { ImageMetadata, ImageOutputFormat } from 'astro'
+import { Picture as AstroPicture, type LocalImageProps } from 'astro:assets'
+import { twMerge } from 'tailwind-merge'
+
+type Variant = 'post'
+
+type Props = {
+  /** The image source to display. Must be an imported image asset that Astro can process and optimize. */
+  src: ImageMetadata
+  /** Alternative text description for the image. Required for accessibility and SEO. Should describe the image content for screen readers. */
+  alt: string
+  /** Optional caption text that appears below the image. If not provided, the alt text will be used as the caption. */
+  title?: string
+  /** Controls when the image loads. 'lazy' defers loading until near viewport, 'eager' loads immediately. Defaults to 'lazy'. */
+  loading?: 'lazy' | 'eager'
+  /** Visual variant that determines styling and dimensions. Currently supports 'post' variant with 768px max width. */
+  variant?: Variant
+}
+
+const { src, alt, title, loading = 'lazy', variant = 'post' } = Astro.props
+const { $id } = Astro.locals
+const pictureId = $id('picture')
+
+const formats = ['webp', 'png'] satisfies ImageOutputFormat[]
+const requiredProps = { src, alt, title, loading } satisfies LocalImageProps
+const propsByVariant: Record<Variant, LocalImageProps> = {
+  post: {
+    ...requiredProps,
+    width: 768,
+    densities: [0.5, 1, 2],
+  },
+}
+
+const props = propsByVariant[variant]
+const classNames = twMerge('w-full', variant === 'post' && 'max-w-[768px]')
+---
+
+<figure aria-labelledby={pictureId} class={classNames}>
+  <AstroPicture {...props} class:list="rounded-lg transition-all duration-300 hover:scale-105" formats={formats} />
+  <figcaption class="text-xs text-gray-400 text-center hover:cursor-default selection:text-gray-700 font-serif" id={pictureId}>
+    {title || alt}
+  </figcaption>
+</figure>

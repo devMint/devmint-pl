@@ -1,0 +1,61 @@
+---
+title: 'Hidden cost of dependencies'
+description: 'Wielu programistów ciągnie do pisania aplikacji serwerowych w Node.js z'
+slug: 'hidden-cost-of-dependencies'
+href: '/posts/hidden-cost-of-dependencies'
+
+meta:
+  dateModified: '2025-07-04'
+  datePublished: '2025-07-04'
+  headline: 'Hidden cost of dependencies'
+  image: '../../assets/hidden-dependencies-1.png'
+
+language: 'en'
+---
+
+import Picture from '../../components/Picture.astro'
+import image1 from '../../assets/hidden-dependencies-1.png'
+import image2 from '../../assets/hidden-dependencies-2.png'
+import image3 from '../../assets/hidden-dependencies-3.png'
+
+<header className="text-theme-black dark:text-theme-white not-prose font-black">
+  <h1 className="text-6xl uppercase">Hidden cost of</h1>
+  <h2 className="devmint-title text-5xl uppercase sm:text-6xl md:text-8xl">dependencies</h2>
+</header>
+
+Many developers are drawn to writing server applications in Node.js with frameworks like Nest.js,
+building UI components with libraries like shadcn/ui, or working with established platforms like Magento.
+These tools promise rapid development and robust solutions, but what happens when the underlying
+dependencies change direction or fall behind?
+
+In this article, I'll share three real-world stories that highlight the hidden costs of dependencies
+that many developers don't consider until it's too late. From custom decorators that break with newer
+bundlers, to UI libraries that become maintenance nightmares, to enterprise platforms that undergo
+massive architectural shifts - these experiences reveal why choosing the right dependencies is about
+more than just current functionality.
+
+Whether you're starting a new project or maintaining existing code, understanding these hidden costs
+can save you from future headaches and help you make more informed decisions about your tech stack.
+
+# Never go with non-native solutions
+
+<Picture
+  src={image1}
+  alt="Hidden cost of dependencies"
+  title="Everything looks good until you don\'t look behind the wall"
+  loading="eager"
+/>
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing
+elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet
+consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum
+dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+
+<Picture src={image2} alt="Hidden cost of dependencies" loading="eager" />
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing
+elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet
+consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum
+dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+
+<Picture src={image3} alt="Hidden cost of dependencies" loading="lazy" />

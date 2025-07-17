@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../components/Layout.astro'
+import PostList from '../components/PostList.astro'
+
+const posts = await getCollection('posts')
+---
+
+<Layout>
+  <div class="enter-page w-full m-auto max-w-[768px]">
+    <PostList posts={posts} />
+  </div>
+</Layout>
