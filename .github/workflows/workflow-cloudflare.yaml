@@ -44,7 +44,7 @@ jobs:
       command-stderr: ${{ steps.deploy.outputs.command-stderr }}
     steps:
       - name: ⬇️ Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v4
@@ -52,7 +52,7 @@ jobs:
           run_install: false
 
       - name: ⎔ Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '24.9.0'
           cache: 'pnpm'
