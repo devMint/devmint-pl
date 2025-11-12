@@ -10,7 +10,7 @@ const { pathname } = Astro.url
 const { title, description, language = 'en' } = Astro.props
 
 const linkClassNames = twMerge([
-  `text-theme-black dark:text-theme-white hover:text-primary-dark dark:hover:text-primary-light lowercase`,
+  `text-theme-black lowercase hover:text-primary-dark dark:text-theme-white dark:hover:text-primary-light`,
   'data-[active=true]:text-primary-dark dark:data-[active=true]:text-primary-light',
 ])
 ---
@@ -30,10 +30,12 @@ const linkClassNames = twMerge([
   </head>
   <body class="dark:bg-[#36393e]">
     <header class="mx-auto mb-12 mt-12 flex w-full max-w-[660px] flex-col items-start pl-4 pr-4">
-      <div class="flex items-end">
-        <h1 class="font-logo text-theme-black dark:text-theme-white text-6xl font-black">devMint</h1>
+      <a class="flex items-end" href="/" title="devMint">
+        <h1 class="font-logo text-theme-black dark:text-theme-white text-6xl font-black">
+          devMint
+        </h1>
         <img alt="devMint" class="w-[26px]" src="/favicon.svg" />
-      </div>
+      </a>
 
       <nav class="flex flex-row gap-4">
         <a class:list={linkClassNames} data-active={pathname === '/'} href="/">Home</a>

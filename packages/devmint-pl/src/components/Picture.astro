@@ -37,8 +37,15 @@ const classNames = twMerge('w-full', variant === 'post' && 'max-w-[768px]')
 ---
 
 <figure aria-labelledby={pictureId} class={classNames}>
-  <AstroPicture {...props} class:list="rounded-lg transition-all duration-300 hover:scale-105" formats={formats} />
-  <figcaption class="text-xs text-gray-400 text-center hover:cursor-default selection:text-gray-700 font-serif" id={pictureId}>
+  <AstroPicture
+    {...props}
+    class:list="rounded-lg transition-all duration-300 hover:scale-105"
+    formats={formats}
+  />
+  <figcaption
+    class="text-xs text-gray-400 text-center hover:cursor-default selection:text-gray-700 font-serif"
+    id={pictureId}
+  >
     {title || alt}
   </figcaption>
 </figure>

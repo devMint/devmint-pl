@@ -36,22 +36,22 @@
     }
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.0",
-    "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.4.1",
-    "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.11.2",
+    "@astrojs/mdx": "^4.3.10",
+    "@astrojs/rss": "^4.0.13",
+    "@astrojs/sitemap": "^3.6.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "^5.15.5",
     "astro-favicons": "^3.1.5",
     "astro-og": "^0.3.0",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.11",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.17",
     "tailwindcss-animated": "^2.0.0"
   },
   "devDependencies": {
-    "sharp": "^0.34.3",
-    "typescript": "^5.8.3",
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.3",
     "wireit": "^0.14.12",
-    "wrangler": "^4.25.0"
+    "wrangler": "^4.47.0"
   }
 }

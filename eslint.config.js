@@ -130,7 +130,16 @@ export default [
         'error',
         {
           type: 'alphabetical',
-          groups: ['key', 'className', 'shorthand', 'condition', 'unknown', 'multiline', 'callback', 'render'],
+          groups: [
+            'key',
+            'className',
+            'shorthand',
+            'condition',
+            'unknown',
+            'multiline',
+            'callback',
+            'render',
+          ],
           customGroups: {
             key: '^key$',
             className: '^className$',

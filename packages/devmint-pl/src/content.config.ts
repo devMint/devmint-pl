@@ -6,7 +6,9 @@ const posts = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      description: z.string().max(155, '155 is limit by SEO Meta Tags for <meta name="description" />'),
+      description: z
+        .string()
+        .max(155, '155 is limit by SEO Meta Tags for <meta name="description" />'),
       slug: z.string(),
       href: z.string(),
       meta: z.object({

@@ -1,7 +1,7 @@
 /** @type {import('prettier').Config} */
 const prettierConfig = {
   plugins: ['prettier-plugin-tailwindcss', '@prettier/plugin-oxc', 'prettier-plugin-astro'],
-  printWidth: 130,
+  printWidth: 100,
   semi: false,
   singleQuote: true,
   tabWidth: 2,
