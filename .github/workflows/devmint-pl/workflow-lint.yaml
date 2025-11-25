@@ -1,0 +1,8 @@
+name: 🧪 Check JS/TS for devmint-pl
+
+on:
+  workflow_dispatch:
+    inputs:
+      ESLINT_REPORTER:
+        type: string
+        default: github-check

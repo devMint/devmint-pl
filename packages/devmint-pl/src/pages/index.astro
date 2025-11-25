@@ -5,12 +5,12 @@ import PostList from '../components/PostList.astro'
 
 const posts = await getCollection('posts')
 const sorted = posts.sort((a, b) =>
-  a.data.meta.datePublished > b.data.meta.datePublished ? -1 : 1,
+  a.data.meta.datePublished < b.data.meta.datePublished ? -1 : 1,
 )
 ---
 
 <Layout>
-  <div class="enter-page w-full m-auto max-w-[768px]">
+  <div class="enter-page w-full m-auto max-w-3xl">
     <PostList posts={sorted} />
   </div>
 </Layout>

@@ -33,7 +33,7 @@ const propsByVariant: Record<Variant, LocalImageProps> = {
 }
 
 const props = propsByVariant[variant]
-const classNames = twMerge('w-full', variant === 'post' && 'max-w-[768px]')
+const classNames = twMerge('w-full', variant === 'post' && 'max-w-3xl')
 ---
 
 <figure aria-labelledby={pictureId} class={classNames}>

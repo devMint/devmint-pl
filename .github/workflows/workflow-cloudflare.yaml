@@ -6,9 +6,6 @@ on:
       package_name:
         type: string
         required: true
-      command:
-        type: string
-        default: 'versions upload'
       environment:
         type: string
         default: 'Production'
@@ -36,7 +33,7 @@ concurrency:
 
 jobs:
   cloudflare:
-    name: 'Deploy devmint.pl'
+    name: 'Deploy to Cloudflare'
     runs-on: ubuntu-latest
     outputs:
       deployment-url: ${{ steps.deploy.outputs.deployment-url }}
@@ -60,21 +57,21 @@ jobs:
       - name: 💾 Set up cache for Wireit
         uses: google/wireit@setup-github-actions-caching/v2
 
-      - name: 💾 Restore cache for Astro
+      - name: 💾 Restore cache
         uses: actions/cache/restore@v4
         with:
-          path: 'packages/devmint-pl/.cache'
-          key: 'astro-images-${{ runner.os }}-${{ github.ref }}'
+          path: 'packages/${{ inputs.package_name }}/.cache'
+          key: 'cache-${{ inputs.package_name }}-${{ runner.os }}-${{ github.ref }}'
           restore-keys: |
-            astro-images-${{ runner.os }}-${{ github.ref }}
-            astro-images-${{ runner.os }}
-            astro-images-
+            cache-${{ inputs.package_name }}-${{ runner.os }}-${{ github.ref }}
+            cache-${{ inputs.package_name }}-${{ runner.os }}
+            cache-${{ inputs.package_name }}-
 
       - name: 📥 Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: 📦 Build
-        run: pnpm --filter=@devmint/devmint-pl build
+        run: pnpm --filter=${{ inputs.package_name}} build
 
       - name: 🚀 Create GitHub Deployment
         uses: chrnorm/deployment-action@v2
@@ -90,8 +87,8 @@ jobs:
           apiToken: ${{ secrets.cloudflare_token }}
           accountId: ${{ secrets.cloudflare_account }}
           gitHubToken: ${{ secrets.gh_token }}
-          workingDirectory: ${{ inputs.package_name }}
-          command: ${{ inputs.command }}
+          workingDirectory: 'packages/${{ inputs.package_name }}'
+          command: 'versions upload'
           packageManager: pnpm
 
       - name: 🔍 Preview URL
@@ -121,5 +118,5 @@ jobs:
         if: success()
         uses: actions/cache/save@v4
         with:
-          path: 'packages/devmint-pl/.cache'
-          key: 'astro-images-${{ runner.os }}-${{ github.ref }}'
+          path: 'packages/${{ inputs.package_name }}/.cache'
+          key: 'cache-${{ inputs.package_name }}-${{ runner.os }}-${{ github.ref }}'

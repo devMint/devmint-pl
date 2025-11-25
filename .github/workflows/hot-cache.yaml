@@ -5,16 +5,11 @@ on:
     - cron: 0 6 * * 6 # Every Saturday at 6:00 AM
 
 jobs:
-  hit-cache:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 💾 Restore cached images
-        id: cache-images-restore
-        uses: actions/cache/restore@v4
-        with:
-          path: 'packages/devmint-pl/.cache'
-          key: 'astro-images-${{ runner.os }}-${{ github.ref }}'
-          restore-keys: |
-            astro-images-${{ runner.os }}-${{ github.ref }}
-            astro-images-${{ runner.os }}
-            astro-images-
+  hot-cache:
+    name: 🔥 Hot cache for ${{ matrix.package_name }}
+    uses: ./.github/workflows/workflow-restore-cache.yaml
+    strategy:
+      matrix:
+        package_name: ['devmint-pl']
+    with:
+      package_name: ${{ matrix.package_name }}

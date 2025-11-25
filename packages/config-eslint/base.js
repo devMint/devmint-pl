@@ -1,34 +1,13 @@
 import js from '@eslint/js'
 import stylistic from '@stylistic/eslint-plugin'
-import prettier from 'eslint-config-prettier'
-import astro from 'eslint-plugin-astro'
 import perfectionist from 'eslint-plugin-perfectionist'
+import markdown from '@eslint/markdown'
 import ts from 'typescript-eslint'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
+import { files } from './files.js'
+import { defineConfig } from 'eslint/config'
 
-const files = {
-  js: ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.cjs', '**/*.astro'],
-  ts: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts', '**/*.astro'],
-}
-
-/** @type {import('eslint').Linter.Config[]} */
-export default [
-  /**
-   * Ignore some files. Alternative to .eslintignore
-   */
-  {
-    ignores: [
-      '**/.astro/**',
-      '**/dist/**',
-      '**/node_modules/**',
-      '**/worker-configuration.d.ts',
-      './packages/devmint-pl/app/assets/**/*',
-      './packages/devmint-pl/public/assets/**/*',
-    ],
-  },
-
-  /**
-   * Javascript
-   */
+export default defineConfig([
   {
     files: [...files.js, ...files.ts],
     rules: {
@@ -56,11 +35,6 @@ export default [
   },
 
   /**
-   * Astro Config
-   */
-  ...astro.configs['jsx-a11y-strict'],
-
-  /**
    * Stylistic
    */
   stylistic.configs.recommended,
@@ -79,6 +53,7 @@ export default [
           newlinesBetween: 'never',
           groups: [
             ['builtin', 'builtin-type'],
+            'react',
             'external-type',
             'internal-type',
             'parent-type',
@@ -91,6 +66,14 @@ export default [
             'object',
             'style',
           ],
+          customGroups: {
+            value: {
+              react: ['^react$', '^react-.+'],
+            },
+            type: {
+              react: ['^react$', '^react-.+'],
+            },
+          },
         },
       ],
       'perfectionist/sort-named-imports': [
@@ -153,9 +136,32 @@ export default [
   },
 
   /**
-   * Prettier
-   * Turns off all rules that are unnecessary or might conflict with Prettier.
-   * Config must be after other configs that you want to override.
+   * A11y
    */
-  prettier,
-]
+  {
+    files: [...files.js, ...files.ts],
+    plugins: {
+      'jsx-a11y': jsxA11y,
+    },
+    rules: {
+      ...jsxA11y.flatConfigs['recommended'].rules,
+    },
+    languageOptions: {
+      ...jsxA11y.flatConfigs['recommended'].languageOptions,
+    }
+   },
+
+  /**
+   * Markdown
+   */
+  {
+		files: [...files.markdown],
+		plugins: {
+			markdown,
+    },
+    language: 'markdown/gfm',
+		languageOptions: {
+			frontmatter: "yaml", // Or pass `"toml"` or `"json"` to enable TOML or JSON front matter parsing.
+		},
+	}
+])

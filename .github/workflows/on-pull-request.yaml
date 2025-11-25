@@ -23,7 +23,7 @@ jobs:
     needs: verify
     if: github.event.pull_request.draft == false
     with:
-      package_name: 'packages/devmint-pl'
+      package_name: 'devmint-pl'
       environment: 'Preview'
     secrets:
       cloudflare_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}

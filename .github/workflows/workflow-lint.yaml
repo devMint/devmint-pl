@@ -34,11 +34,11 @@ jobs:
       - name: 📥 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: 🔬 Typecheck
-        run: pnpm -r typecheck
-
       - name: 🔬 Find unused files
         run: pnpm unused
+
+      - name: 🔬 Lint
+        uses: ./.github/workflows/devmint-pl/workflow-lint.yaml
 
       - name: 🔬 Lint
         uses: reviewdog/action-eslint@v4

@@ -1,5 +1,5 @@
 declare namespace App {
   interface Locals {
-    $id: (prefix: string) => string
+    $id: (prefix: string) => string;
   }
 }

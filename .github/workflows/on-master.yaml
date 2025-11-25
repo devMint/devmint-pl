@@ -22,7 +22,7 @@ jobs:
     uses: ./.github/workflows/workflow-cloudflare.yaml
     needs: verify
     with:
-      package_name: 'packages/devmint-pl'
+      package_name: 'devmint-pl'
       command: 'deploy'
       environment: 'Production'
     secrets:

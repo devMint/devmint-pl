@@ -1,0 +1,6 @@
+pnpm-lock.yaml
+.astro/**/*
+.cache/**/*
+.wireit/**/*
+dist/**/*
+node_modules/**/*

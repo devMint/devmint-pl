@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@tailwindcss/typography';
 @plugin 'tailwindcss-animated';
 
@@ -25,8 +25,8 @@
     rgba(36, 171, 193, 1) 100%
   );
 
-  --font-sans-serif: 'Montserrat', --font-serif: 'Forum', serif;
-  --font-logo: 'Montserrat', serif;
+  --font-sans-serif: "Montserrat", --font-serif: "Forum", serif;
+  --font-logo: "Montserrat", serif;
 }
 
 * {

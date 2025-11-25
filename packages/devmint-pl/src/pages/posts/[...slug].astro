@@ -4,6 +4,7 @@ import Comments from '../../components/Comments.astro'
 import PostHead from '../../components/head/PostHead.astro'
 import Layout from '../../components/Layout.astro'
 import Post from '../../components/Post.astro'
+import PostSocial from '../../components/PostSocial.astro'
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts')
@@ -29,10 +30,19 @@ const { Content } = await render(post)
     slot="head"
     title={post.data.title}
   />
-  <Post class="enter-page m-auto max-w-[768px] pl-4 pr-4" post={post.data}>
+  <Post class="enter-page m-auto max-w-3xl pl-4 pr-4" post={post.data}>
     <Content />
   </Post>
-  <div class="enter-page m-auto max-w-[768px] pl-4 pr-4 pt-4 border-t border-theme-black">
+
+  {
+    post.data.social.length > 0 && (
+      <div class="enter-page m-auto max-w-3xl pb-4">
+        <PostSocial socials={post.data.social} />
+      </div>
+    )
+  }
+
+  <div class="enter-page m-auto max-w-3xl pl-4 pr-4 pt-4 border-t border-theme-black">
     <Comments language={post.data.language} />
   </div>
 </Layout>
