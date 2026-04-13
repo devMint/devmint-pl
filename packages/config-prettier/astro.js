@@ -1,15 +1,17 @@
+import * as pluginAstro from "prettier-plugin-astro";
+
 export default function () {
   return {
-    plugins: ['prettier-plugin-astro'],
+    plugins: [pluginAstro],
     astroAllowShorthand: false,
     astroSkipFrontmatter: false,
     overrides: [
       {
-        files: '*.astro',
+        files: "*.astro",
         options: {
-          parser: 'astro',
+          parser: "astro",
         },
       },
     ],
-  }
+  };
 }

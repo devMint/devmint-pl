@@ -4,9 +4,7 @@ import Layout from '../components/Layout.astro'
 import PostList from '../components/PostList.astro'
 
 const posts = await getCollection('posts')
-const sorted = posts.sort((a, b) =>
-  a.data.meta.datePublished < b.data.meta.datePublished ? -1 : 1,
-)
+const sorted = posts.sort((a, b) => (a.data.meta.datePublished < b.data.meta.datePublished ? -1 : 1))
 ---
 
 <Layout>

@@ -1,12 +1,14 @@
+import * as pluginTailwind from "prettier-plugin-tailwindcss";
+
 /**
- * @param {String} tailwindStylesheet 
+ * @param {String} tailwindStylesheet
  * @returns {import('prettier-plugin-tailwindcss').PluginOptions}
  */
 export default function (tailwindStylesheet) {
   return {
-    plugins: ['prettier-plugin-tailwindcss'],
+    plugins: [pluginTailwind],
     tailwindStylesheet,
-    tailwindFunctions: ['twMerge'],
+    tailwindFunctions: ["twMerge"],
     tailwindPreserveDuplicates: true,
-  }
+  };
 }

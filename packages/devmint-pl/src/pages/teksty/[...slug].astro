@@ -24,12 +24,7 @@ const { Content } = await render(post)
 ---
 
 <Layout description={post.data.description} language={post.data.language} title={post.data.title}>
-  <PostHead
-    description={post.data.description}
-    image={post.data.meta.image}
-    slot="head"
-    title={post.data.title}
-  />
+  <PostHead description={post.data.description} image={post.data.meta.image} slot="head" title={post.data.title} />
   <Post class="enter-page m-auto max-w-3xl pl-4 pr-4" post={post.data}>
     <Content />
   </Post>

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @plugin 'tailwindcss-animated';
 
@@ -18,15 +18,10 @@
   --color-secondary-dark: rgb(34 144 107);
   --color-secondary-darker: rgb(15 62 46);
 
-  --gradient-devmint: linear-gradient(
-    45deg,
-    rgba(26, 160, 103, 1) 0%,
-    rgba(34, 168, 172, 1) 47%,
-    rgba(36, 171, 193, 1) 100%
-  );
+  --gradient-devmint: linear-gradient(45deg, rgba(26, 160, 103, 1) 0%, rgba(34, 168, 172, 1) 47%, rgba(36, 171, 193, 1) 100%);
 
-  --font-sans-serif: "Montserrat", --font-serif: "Forum", serif;
-  --font-logo: "Montserrat", serif;
+  --font-sans-serif: 'Montserrat', --font-serif: 'Forum', serif;
+  --font-logo: 'Montserrat', serif;
 }
 
 * {
