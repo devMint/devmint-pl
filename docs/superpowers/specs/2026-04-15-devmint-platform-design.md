@@ -410,9 +410,138 @@ The implementation should optimize for:
 - editorial flexibility,
 - high-quality reading experience.
 
-## 12. Risks and Guardrails
+## 12. Experience Design Direction
 
-### 12.1 Risk: Trend Lock-In
+The platform's experience design should feel:
+
+- minimal,
+- modern,
+- technically credible,
+- professionally restrained.
+
+It should not feel like:
+
+- a playful startup landing page,
+- a magazine-style editorial project,
+- a corporate consultancy brochure,
+- or a highly personal blog centered more on identity than substance.
+
+The visual and interaction goal is:
+
+`quiet confidence with a technical edge`
+
+### 12.1 Brand Presence
+
+The visual brand balance should stay hybrid but asymmetrical:
+
+- `devMint` should remain visually dominant,
+- `Grzegorz Gajda` should be present but quieter,
+- visitors should understand there is a real person behind the platform without the site becoming primarily a personal-name brand.
+
+### 12.2 Color System
+
+The existing brand colors derived from the logo are important and should be preserved.
+
+In particular, the design should continue to use the brand anchors previously defined in the historical theme:
+
+- `--color-primary`
+- `--color-secondary`
+
+These colors are meaningful because they were chosen from the existing logo and should remain the foundation of the identity system.
+
+Design rule:
+
+- neutrals should carry most of the layout,
+- `primary` and `secondary` should carry brand identity,
+- the gradient derived from them should be used as a signature accent,
+- the interface should not introduce a new unrelated palette that dilutes recognition.
+
+Practical use cases for the brand colors include:
+
+- links,
+- active states,
+- tags,
+- selected highlights,
+- small focal UI moments,
+- logo and brand treatments.
+
+Larger page surfaces should remain restrained so the site stays minimal and professional.
+
+### 12.3 Homepage Composition
+
+The homepage should be:
+
+`content-first`
+
+This means a new visitor should encounter the thinking quickly rather than a long explanatory block.
+
+The homepage should roughly prioritize:
+
+- compact top navigation and brand presence,
+- a short positioning cue,
+- a featured article or featured piece high on the page,
+- recent content visible immediately,
+- clear entry points into `Engineering` and `Management`,
+- quieter paths into `About` and `Work With Me`.
+
+The homepage should not behave like:
+
+- a long manifesto,
+- a consultancy brochure,
+- or only a raw chronological list.
+
+Its role is:
+
+`show the thinking first, explain the identity second`
+
+### 12.4 Article Experience
+
+Article pages should use a:
+
+`hybrid technical read`
+
+This means:
+
+- headlines, metadata, and structural UI should be sans-serif,
+- body copy should be serif for reading comfort,
+- layout width should stay narrow and calm,
+- tags should be simple and visible,
+- the surrounding interface should stay minimal.
+
+The intended feel is:
+
+- more modern than the earlier personal blog,
+- more human than product documentation,
+- more technically credible than a soft editorial magazine layout.
+
+The article page should support room for:
+
+- `read next`,
+- comments/discussion,
+- simple tag navigation,
+- future media attachments such as podcast/audio related to an article.
+
+Those features should support the article rather than compete with it.
+
+Typography rule:
+
+- serif is for reading,
+- sans-serif is for structure.
+
+### 12.5 Reference Direction
+
+The intended design direction is closer to calm, modern product websites such as Claude or Vercel in overall restraint and polish, while keeping the `devMint` color identity and a stronger long-form reading experience.
+
+This is not a request to copy those brands visually. It is a directional reference for:
+
+- restraint,
+- modernity,
+- spacing discipline,
+- visual clarity.
+
+## 13. Risks and Guardrails
+
+### 13.1 Risk: Trend Lock-In
 
 If the site overcommits to one current theme such as AI adoption, it may become obsolete or mispositioned later.
 
@@ -420,7 +549,7 @@ Guardrail:
 
 - keep the site's identity broader than the current featured topic.
 
-### 12.2 Risk: Pretend Consultancy Positioning
+### 13.2 Risk: Pretend Consultancy Positioning
 
 If the site sounds like a mature consultancy before the proof exists, credibility may drop.
 
@@ -428,7 +557,7 @@ Guardrail:
 
 - keep the advisory layer light and honest.
 
-### 12.3 Risk: Publishing Friction
+### 13.3 Risk: Publishing Friction
 
 If every piece must be polished, publishing velocity may collapse.
 
@@ -436,7 +565,7 @@ Guardrail:
 
 - support both flagship pieces and shorter working notes.
 
-### 12.4 Risk: Taxonomy Overdesign
+### 13.4 Risk: Taxonomy Overdesign
 
 If tags or categories are defined too early, the content system may become artificial and brittle.
 
@@ -444,7 +573,7 @@ Guardrail:
 
 - support tags structurally, but let the actual tag set emerge from real content.
 
-## 13. Initial Implementation Intent
+## 14. Initial Implementation Intent
 
 The first implementation plan should focus on:
 
@@ -455,7 +584,7 @@ The first implementation plan should focus on:
 - building article pages with strong reading, accessibility, and SEO foundations,
 - keeping the advisory path present but intentionally light.
 
-## 14. Summary
+## 15. Summary
 
 `devmint.pl` should begin as a publication-first platform for building trust and recognizability around Grzegorz Gajda's thinking at the intersection of engineering, management, and business in small companies.
 
@@ -469,4 +598,7 @@ The platform should be:
 - responsive,
 - accessible,
 - SEO-aware,
+- technically professional in tone,
+- content-first on the homepage,
+- and built around a hybrid technical article-reading experience,
 - and small enough in V1 to ship without pretending to be more mature than it is.
