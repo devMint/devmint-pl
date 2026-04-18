@@ -1,6 +1,0 @@
-name = "devmint-pl"
-compatibility_date = "2025-04-09"
-
-[assets]
-directory = "./dist"
-run_worker_first = false
