@@ -1,0 +1,35 @@
+{
+  "skill_name": "cli-github",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Show me all open bug issues for this repository and give me the exact gh command you used.",
+      "expected_output": "Uses the repository default, queries open issues with native GitHub Issue Type data, filters for Issue Type `Bug`, summarizes the results briefly, and includes an exact gh api graphql command.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Check whether issue #17 has a linked pull request and tell me how certain you are.",
+      "expected_output": "Uses gh issue view with closedByPullRequestsReferences, reports whether a linked closing PR was found, and includes a caveat if the field is empty.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Inspect the sub-issues for issue #12 and tell me how many are completed versus still open.",
+      "expected_output": "Uses gh api against the sub-issues endpoint, summarizes closed versus non-closed items, and includes the exact command or jq-based query.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Create a technical sub-issue under issue #38 for Cloudflare Workers setup, and tell me the exact gh commands you would use without relying on a non-existent gh issue subissues command.",
+      "expected_output": "Creates or drafts the child issue with standard gh issue create or GraphQL issue-type flow, then attaches it with gh api against the REST sub_issues endpoint, and does not invent a first-class gh issue subissues command.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Show me all open bug issues for this repository, but do not use any legacy type labels if the workflow stores issue type natively.",
+      "expected_output": "Uses native GitHub Issue Type data instead of legacy type:* labels, filters for Issue Type `Bug`, and does not suggest type:bug labels as a substitute for Issue Type.",
+      "files": []
+    }
+  ]
+}
